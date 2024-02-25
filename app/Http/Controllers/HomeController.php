@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index(){
         $nama = "Nobita";
         $pekerjaan = "Student";
-        return view('home', compact('nama', 'pekerjaan'));
+        return view('homepage', compact('nama', 'pekerjaan'));
     }
 
     public function contact(){
