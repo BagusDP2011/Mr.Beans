@@ -1,0 +1,15 @@
+
+.totalpembayaran{
+	padding-left: 20px;
+}
+
+.total{
+	margin-left: 35%;
+}
+
+.table-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh; /* Adjust this height as needed */
+}

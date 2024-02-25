@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ListBarangController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,37 +17,24 @@ use App\Http\Controllers\ListBarangController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', [HomeController::class, 'index']);
+//Mainpage Routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'homeData']);
-Route::get('/contact', [HomeController::class, 'contact']);
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/help', [HomeController::class, 'help'])->name('help');
+Route::get('/welcome', [HomeController::class, 'welcome']);
+Route::get('/reseller', [HomeController::class, 'reseller'])->name('reseller');
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+//Transactions Routes
+Route::get('/cart', [TransactionController::class, 'cart'])->name('cart');
+Route::get('/konfirmasi', [TransactionController::class, 'konfirmasi']);
 
-Route::get('/cart', function () {
-    return view('cart');
-});
-Route::get('/help', function () {
-    return view('help');
-});
-Route::get('/konfirmasi', function () {
-    return view('konfirmasi');
-});
-Route::get('/register', function () {
-    return view('register');
-});
-Route::get('/reseller', function () {
-    return view('reseller');
-});
+//User Routes
+Route::get('/register', [UserController::class, 'register'])->name('register');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/user/{id}', [UserController::class, 'userDetail']);
 
-Route::get('/user/{id}', function ($id) {
-    return 'User dengan ID ' . $id;
-});
-
+//Admin Routes
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return 'Admin Dashboard';
@@ -58,8 +47,8 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-// Route::get('/listbarang/{id}/{nama}', function ($id, $nama) {
-//     return view('list_barang', compact('id', 'nama'));
-// });
-Route::get('/list_barang/{id}/{nama}', [ListBarangController::class, 'tampilkan']);
-Route::get('/product', [ListBarangController::class, 'tampilkanSemua']);
+//Products Routes
+Route::prefix('product')->group(function () {
+    Route::get('/', [ProductController::class, 'allProducts'])->name('products');
+    Route::get('/detail/{id}/{nama}', [ProductController::class, 'detailProduct']);
+});

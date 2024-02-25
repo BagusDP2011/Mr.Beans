@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     // public function index(){
@@ -24,5 +21,14 @@ class HomeController extends Controller
     }
     public function contact(){
         return view('contact');
+    }
+    public function help(){
+        return view('help');
+    }
+    public function welcome(){
+        return view('welcome');
+    }
+    public function reseller(){
+        return view('reseller');
     }
 }
