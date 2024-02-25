@@ -19,6 +19,9 @@ class HomeController extends Controller
         return view('homepage', compact('nama', 'pekerjaan'));
     }
 
+    public function homeData(){
+        return view('homepage2');
+    }
     public function contact(){
         return view('contact');
     }

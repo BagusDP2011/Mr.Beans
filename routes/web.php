@@ -19,6 +19,7 @@ use App\Http\Controllers\ListBarangController;
 //     return view('welcome');
 // });
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'homeData']);
 Route::get('/contact', [HomeController::class, 'contact']);
 
 Route::get('/welcome', function () {
