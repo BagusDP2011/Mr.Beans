@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";  // replace with your MySQL server name
 $username = "root";      // replace with your MySQL username
-$password = "password";      // replace with your MySQL password
+$password = "";      // replace with your MySQL password
 $dbname = "kopidb";          // replace with your MySQL database name
 
 // Create connection
