@@ -15,4 +15,8 @@ class UserController extends Controller
     function userDetail($id){
         return 'User dengan ID ' . $id;
     }
+
+    function registerForm(){
+        return view('registerForm');
+    }
 }

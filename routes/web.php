@@ -56,4 +56,4 @@ Route::prefix('product')->group(function () {
 
 //Route tambahan
 
-Route::get('/registerForm', [UserController::class, 'registerForm'])->name('registerForm');
+Route::post('/registerForm', [UserController::class, 'registerForm'])->name('registerForm');
