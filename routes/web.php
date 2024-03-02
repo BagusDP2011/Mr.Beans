@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\UserController;
 
 //Mainpage Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/old', [HomeController::class, 'dashboardLama']);
 Route::get('/home', [HomeController::class, 'homeData']);
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/help', [HomeController::class, 'help'])->name('help');
@@ -57,3 +59,12 @@ Route::prefix('product')->group(function () {
 //Route tambahan
 
 Route::post('/registerForm', [UserController::class, 'registerForm'])->name('registerForm');
+
+Route::get('/tugas', [TugasController::class, 'display'])->name('tugas');
+
+Route::get('/aldo1', function () {
+    return view('aldo1');
+});
+Route::get('/aldo2', function () {
+    return view('aldo2');
+});
