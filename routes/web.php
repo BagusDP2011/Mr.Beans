@@ -30,7 +30,7 @@ Route::get('/reseller', [HomeController::class, 'reseller'])->name('reseller');
 //Transactions Routes
 Route::get('/cart', [TransactionController::class, 'cart'])->name('cart');
 Route::get('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
-Route::post('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
+// Route::post('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
 
 //User Routes
 Route::get('/register', [UserController::class, 'register'])->name('register');
