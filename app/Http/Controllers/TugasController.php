@@ -23,5 +23,9 @@ class TugasController extends Controller
         $data = $this->getData();
         return view('tugas', compact('data'));
     }
+    public function tugasBagusM5()
+    {
+        return view('TugasBagus');
+    }
 }
 ?>

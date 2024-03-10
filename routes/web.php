@@ -61,6 +61,7 @@ Route::prefix('product')->group(function () {
 Route::post('/registerForm', [UserController::class, 'registerForm'])->name('registerForm');
 
 Route::get('/tugas', [TugasController::class, 'display'])->name('tugas');
+Route::get('/tugasBagusM5', [TugasController::class, 'tugasBagusM5']);
 
 Route::get('/aldo1', function () {
     return view('aldo1');
