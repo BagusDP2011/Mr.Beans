@@ -62,6 +62,7 @@ Route::post('/registerForm', [UserController::class, 'registerForm'])->name('reg
 
 Route::get('/tugas', [TugasController::class, 'display'])->name('tugas');
 Route::get('/tugasBagusM5', [TugasController::class, 'tugasBagusM5']);
+Route::get('/BagusM6', [TugasController::class, 'tugasBagusM6']);
 
 Route::get('/aldo1', function () {
     return view('aldo1');
