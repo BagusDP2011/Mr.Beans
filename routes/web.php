@@ -69,3 +69,6 @@ Route::get('/aldo1', function () {
 Route::get('/aldo2', function () {
     return view('aldo2');
 });
+Route::get('/aldodashboard1', function () {
+    return view('aldodashboard1');
+});
