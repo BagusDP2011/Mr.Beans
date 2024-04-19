@@ -73,3 +73,12 @@ Route::get('/aldo2', function () {
 Route::get('/aldodashboard1', function () {
     return view('aldodashboard1');
 });
+
+Route::fallback(function () {
+    // You can return a view for your custom 404 page here
+    return view('errors.404');
+});
+
+// Route::fallback(function () {
+//     return 'Page not found';
+// });
