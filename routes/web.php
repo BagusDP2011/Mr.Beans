@@ -61,6 +61,8 @@ Route::prefix('product')->group(function () {
 Route::post('/register', [UserController::class, 'store'])->name('register.store');
 
 Route::get('/tugas', [TugasController::class, 'display'])->name('tugas');
+Route::get('/tugasBagusM5', [TugasController::class, 'tugasBagusM5']);
+Route::get('/BagusM6', [TugasController::class, 'tugasBagusM6']);
 
 Route::get('/aldo1', function () {
     return view('aldo1');
@@ -69,3 +71,16 @@ Route::get('/aldo2', function () {
     return view('aldo2');
 });
 
+Route::get('/aldodashboard1', function () {
+    return view('aldodashboard1');
+});
+
+Route::fallback(function () {
+    // You can return a view for your custom 404 page here
+    return view('errors.404');
+});
+
+
+// Route::fallback(function () {
+//     return 'Page not found';
+// });
