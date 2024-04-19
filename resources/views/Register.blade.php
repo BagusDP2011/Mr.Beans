@@ -19,7 +19,7 @@
     @include('header')
 
     <div class="wrap">
-        <form action="{{ route('registerForm') }}" id="form" method="post">
+        <form action="{{ route('register') }}" id="form" method="post">
             @csrf <!-- CSRF protection -->
             <h1 style="font-weight: bold;">Registrasi</h1>
             <div class="input-box d-flex justify-content-between">

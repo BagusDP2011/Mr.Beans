@@ -58,7 +58,7 @@ Route::prefix('product')->group(function () {
 
 //Route tambahan
 
-Route::post('/registerForm', [UserController::class, 'registerForm'])->name('registerForm');
+Route::post('/register', [UserController::class, 'store'])->name('register.store');
 
 Route::get('/tugas', [TugasController::class, 'display'])->name('tugas');
 
@@ -68,3 +68,4 @@ Route::get('/aldo1', function () {
 Route::get('/aldo2', function () {
     return view('aldo2');
 });
+
