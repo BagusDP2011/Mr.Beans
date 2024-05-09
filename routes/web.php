@@ -40,7 +40,9 @@ Route::get('/user/{id}', [UserController::class, 'userDetail']);
 //Admin Routes
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
-        return 'Admin Dashboard';
+        $name = "Admin nih boss"; // Dummy data
+        $menus = ['Menu 1', 'Menu 2', 'Menu 3']; // Contoh data menu
+        return view('AdminDashboard', compact('name', 'menus'));
     });
     Route::get('/users', function () {
         return 'Admin for users';
