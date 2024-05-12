@@ -13,12 +13,13 @@
 
 <!-- Top container -->
 <nav class="bg-gray-900 text-white">
-    <div class="container mx-auto py-4">
+    <div class="container mx-auto py-2">
         <button class="block lg:hidden focus:outline-none">
             <i class="fa fa-bars"></i>
         </button>
         <div class="hidden lg:flex items-center justify-between">
-            <a class="text-lg font-semibold" href="#">Logo</a>
+            Empty
+            <img src="{{ asset('./assets/old/Logo MB Transparent.png') }}" class="rounded-full w-16 h-16" alt="Profile Picture">
         </div>
     </div>
 </nav>
@@ -26,7 +27,7 @@
 <!-- Sidebar/menu -->
 <div class="flex flex-col bg-white w-64 h-screen shadow-lg fixed top-0 left-0 transition-all duration-500 z-50">
     <div class="p-4 flex items-center">
-        <img src="{{ asset('./assets/old/Logo MB Transparent.png') }}" class="rounded-full w-12 h-12" alt="Profile Picture">
+        <img src="{{ asset('./assets/additional/avatar.jpg') }}" class="rounded-lg w-16 h-16" alt="Profile Picture">
         <div class="ml-4">
             <span class="block font-semibold">Welcome, <strong>{{ $name }}</strong></span>
             <div class="flex mt-1">
