@@ -46,7 +46,7 @@
                         <!-- 2 -->
                         <!-- Left Side (Text) -->
                         <div class="col-md-2">
-                            <img src="{{ asset('assets/org/1ayub.png') }}" alt="Ayubi" class="img-fluid me-auto"
+                            <img src="{{ asset('assets/org/2ayub-ok.png') }}" alt="Ayubi" class="img-fluid me-auto"
                                 width="200px" height="300px">
                         </div>
                         <!-- Right Side (Picture) -->
@@ -123,13 +123,27 @@
                        <!-- 6 -->
                         <!-- Left Side (Text) -->
                         <div class="col-md-2 align-items-end">
-                            <img src="{{ asset('assets/org/1hakim-ok.png') }}" alt="Hakim" width="200px" height="200px">
+                            <img src="{{ asset('assets/org/1sheeyl-ok.png') }}" alt="Sheeryl" width="200px" height="200px">
                         </div>
                         <!-- Right Side (Picture) -->
                         <div class="col-md-10 mt-5">
                             <h2>Biodata Tim</h2>
                             <p class="mr-5" style="margin-right: 50px;">
-                                <strong>NIM:</strong> 33123332002 <br />
+                                <strong>NIM:</strong> 3312311086 <br />
+                                <strong>Nama:</strong> Sheeryl Violetta<br />
+                                <strong>Alamat:</strong> Piayu<br />
+                                <strong>Jenis Kelamin:</strong> Wanita<br />
+                                <strong>Agama:</strong> Kristen<br />
+                                <strong>No. HP:</strong> 082284350708<br />
+                                <strong>Email:</strong> serilvioleta@gmail.com<br />
+                            </p>
+                        </div>
+                         <!-- 4 -->
+                        <!-- Left Side (Text) -->
+                        <div class="col-md-8 mt-5" style="text-align: right;">
+                            <h2>Biodata Tim</h2>
+                            <p class="ml-5" style="margin-left: 50px;">
+                            <strong>NIM:</strong> 33123332002 <br />
                                 <strong>Nama:</strong> Leornad Aldo M Purba<br />
                                 <strong>Alamat:</strong> Piayu<br />
                                 <strong>Jenis Kelamin:</strong> Pria<br />
@@ -138,23 +152,9 @@
                                 <strong>Email:</strong> aldoea120911@gmail.com<br />
                             </p>
                         </div>
-                         <!-- 4 -->
-                        <!-- Left Side (Text) -->
-                        <div class="col-md-8 mt-5" style="text-align: right;">
-                            <h2>Biodata Tim</h2>
-                            <p class="ml-5" style="margin-left: 50px;">
-                                <strong>NIM:</strong> 3312311086 <br />
-                                <strong>Nama:</strong> Sheeryl Violetta<br />
-                                <strong>Alamat:</strong> Piayu<br />
-                                <strong>Jenis Kelamin:</strong> Wanita<br />
-                                <strong>Agama:</strong> Kristen<br />
-                                <strong>No. HP:</strong> 0822-8435-0708<br />
-                                <strong>Email:</strong> serilvioleta@gmail.com<br />
-                            </p>
-                        </div>
                         <!-- Right Side (Picture) -->
                         <div class="col-md-4">
-                            <img src="{{ asset('assets/org/1netty-ok.png') }}" alt="Netty" height="300px">
+                            <img src="{{ asset('assets/org/1leor-ok.png') }}" alt="Leornad" height="300px">
                         </div>
                     </div>
                 </div>
