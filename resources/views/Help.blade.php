@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  s
   <title>MrBeans CoffeeBeans Shop</title>
 </head>
 
@@ -21,7 +20,7 @@
 
     <!-- Vision and Mission Section -->
     <section class="mb-10">
-      <h1 class="text-3xl font-semibold mt-5 mb-4">Help Center</h1>
+      <h1 class="text-3xl font-semibold mt-5 mb-4 pt-4">Help Center</h1>
       <div class="mb-6">
         <h2 class="text-xl font-semibold mb-2">Vision</h2>
         <p class="text-gray-700">Our vision at Mr. Beans Coffee Beans Shop is to provide the finest coffee beans to coffee enthusiasts around the world. We strive to source the best beans, roast them to perfection, and deliver an exceptional coffee experience.</p>
@@ -85,21 +84,8 @@
         </table>
       </div>
     </section>
-
   </div>
-
-  <!-- Footer -->
-  <div class="footer bg-gray-800 text-white py-4 text-center">
-    <p class="text-sm">&copy; DEVELOP BY: MrBeans Teams</p>
-  </div>
-
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script>
-    $(document).ready(function() {
-      $('#carouselExampleControls').carousel();
-    });
-  </script>
-
+  @include('footer')
 </body>
 
 </html>

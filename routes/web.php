@@ -20,7 +20,7 @@ use App\Http\Controllers\TugasController;
 
 //Mainpage Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/old', [HomeController::class, 'dashboardLama']);
+Route::get('/old', [HomeController::class, 'dashboardLama']); //Bootstrap
 Route::get('/home', [HomeController::class, 'homeData']);
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/help', [HomeController::class, 'help'])->name('help');
@@ -34,14 +34,22 @@ Route::get('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('k
 
 //User Routes
 Route::get('/register', [UserController::class, 'register'])->name('register');
-Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('web');;
 Route::get('/user/{id}', [UserController::class, 'userDetail']);
+// Route::get('/', [LoginController::class, 'login'])->name('login');
+
+//Actions
+Route::post('actionlogin', [UserController::class, 'actionlogin'])->name('actionlogin');
+Route::post('register/action', [UserController::class, 'actionregister'])->name('actionregister');
+
+
+Route::get('actionlogout', [UserController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 //Admin Routes
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         $name = "Admin"; // Dummy data
-        $menus = ['Menu 1', 'Menu 2', 'Menu 3']; // Contoh data menu
+        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
         return view('AdminDashboard', compact('name', 'menus'));
     });
     Route::get('/users', function () {
@@ -60,23 +68,26 @@ Route::prefix('product')->group(function () {
 
 //Route tambahan
 
-Route::post('/register', [UserController::class, 'store'])->name('register.store');
+// Route::post('/registerulka', [UserController::class, 'store'])->name('register.store');
 
 Route::get('/tugas', [TugasController::class, 'display'])->name('tugas');
 Route::get('/tugasBagusM5', [TugasController::class, 'tugasBagusM5']);
 Route::get('/BagusM6', [TugasController::class, 'tugasBagusM6']);
 
+
+//Route Aldo
 Route::get('/aldo1', function () {
     return view('aldo1');
 });
 Route::get('/aldo2', function () {
     return view('aldo2');
 });
-
 Route::get('/aldodashboard1', function () {
     return view('aldodashboard1');
 });
 
+
+//Route 404 Penting!
 Route::fallback(function () {
     // You can return a view for your custom 404 page here
     return view('errors.404');

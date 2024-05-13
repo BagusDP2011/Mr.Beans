@@ -27,7 +27,7 @@
             <div class="w-full px-4">
                <div class="mx-auto max-w-[400px] text-center">
                   <center>
-                     <img src="{{ asset("/assets/404/clown.png") }}" alt="Clown Guidance" />
+                     <img src="{{ asset('/assets/404/clown.png') }}" alt="Clown Guidance" />
                   </center>
                   <h2 class="mb-2 text-[50px] font-bold leading-none text-white sm:text-[80px] md:text-[100px]">
                      404

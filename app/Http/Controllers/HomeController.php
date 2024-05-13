@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\Product;
 class HomeController extends Controller
 {
@@ -11,8 +13,9 @@ class HomeController extends Controller
     //     ];
     //     return view('home')->with($data);
     // }
+
     public function index(){
-        $products = Product::paginate(8);
+        $products = Product::paginate(6);
         return view('homepage', ['produk'=> $products]);
     }
 

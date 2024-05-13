@@ -1,16 +1,10 @@
-@php
-    $fullname = session('fullname', 'Guest');
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.6/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>MrBeans CoffeeBeans Shop</title>
 </head>
@@ -18,122 +12,122 @@
 <body>
     @include('header')
 
-    <div class="row mt-5 no-gutters justify-content-center">
-        <div class="col-md-11 m-5">
-            <h1>List of Resellers and Sponsors</h1>
-            <div class="row text-center">
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/bni.jpg') }}" class="card-img-top" alt="BNI Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">BNI</h5>
+    <div class="container mx-auto px-4 m-5">
+        <div class="mt-10">
+            <h1 class="text-3xl font-bold mb-5">List of Resellers and Sponsors</h1>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/bni.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="BNI Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">BNI</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/garuda.jpg') }}" class="card-img-top" alt="Garuda Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">Garuda</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/garuda.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="Garuda Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Garuda</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/gojek.jpg') }}" class="card-img-top" alt="Gojek Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">Gojek</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/gojek.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="Gojek Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Gojek</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/indomie.jpg') }}" class="card-img-top" alt="Indomie Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">Indomie</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/indomie.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="Indomie Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Indomie</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/kai.jpg') }}" class="card-img-top" alt="KAI Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">KAI</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/kai.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="KAI Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">KAI</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/pertamina.jpg') }}" class="card-img-top" alt="Pertamina Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">Pertamina</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/pertamina.jpg') }}"
+                            class="w-full h-40 object-cover object-center" alt="Pertamina Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Pertamina</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/pln.jpg') }}" class="card-img-top" alt="PLN Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">PLN</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/pln.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="PLN Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">PLN</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/rcti.jpg') }}" class="card-img-top" alt="RCTI Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">RCTI</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/rcti.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="RCTI Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">RCTI</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/sctv.jpg') }}" class="card-img-top" alt="SCTV Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">SCTV</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/sctv.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="SCTV Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">SCTV</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/telkom.jpg') }}" class="card-img-top" alt="Telkom Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">Telkom</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/telkom.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="Telkom Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Telkom</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/tiket.jpg') }}" class="card-img-top" alt="Tiket.com Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">Tiket.com</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/tiket.jpg') }}" class="w-full h-40 object-cover object-center"
+                            alt="Tiket.com Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Tiket.com</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-4 col-xs-5">
-                    <div class="card mt-2">
-                        <img src="{{ asset('assets/logo/tokopedia.jpg') }}" class="card-img-top" alt="Tokopedia Logo">
-                        <div class="card-body">
-                            <h5 class="card-title">Tokopedia</h5>
+                <div class="max-w-xs mx-auto">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="{{ asset('assets/logo/tokopedia.jpg') }}"
+                            class="w-full h-40 object-cover object-center" alt="Tokopedia Logo">
+                        <div class="py-4 px-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Tokopedia</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Uncomment the following lines if not already included in your layout file -->
-{{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
-<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-<script>
-    $(document).ready(function () {
-        $('#carouselExampleControls').carousel();
-    });
-</script>
-
-
     </div>
-
+    @include('footer')
 </body>
 
 </html>

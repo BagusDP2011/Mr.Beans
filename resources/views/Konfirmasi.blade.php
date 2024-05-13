@@ -37,7 +37,7 @@
 
                         if (distance <= 0) {
                             clearInterval(interval);
-                            document.getElementById("countdown").innerHTML = "<li>Countdown Finished</li>";
+                            document.getElementById('countdown').innerHTML = "<li>Countdown Finished</li>";
                             return;
                         }
 
@@ -46,10 +46,10 @@
                         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                        document.getElementById("days").innerHTML = formatTime(days);
-                        document.getElementById("hours").innerHTML = formatTime(hours);
-                        document.getElementById("minutes").innerHTML = formatTime(minutes);
-                        document.getElementById("seconds").innerHTML = formatTime(seconds);
+                        document.getElementById('days').innerHTML = formatTime(days);
+                        document.getElementById('hours').innerHTML = formatTime(hours);
+                        document.getElementById('minutes').innerHTML = formatTime(minutes);
+                        document.getElementById('seconds').innerHTML = formatTime(seconds);
                     }, 1000);
                 }
 
@@ -123,6 +123,7 @@
 
         </center>
     </div>
+    @include('footer')
 </body>
 
 </html>

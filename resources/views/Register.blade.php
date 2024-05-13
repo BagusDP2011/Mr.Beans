@@ -1,4 +1,4 @@
-@include('koneksi')
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/regist.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -19,9 +20,27 @@
     @include('header')
 
     <div class="wrap">
-        <form action="{{ route('register') }}" id="form" method="post">
+        @if(session('message'))
+            <div class="alert alert-success">
+                {{session('message')}}
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-error">
+                <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400 font-bold" role="alert">
+                    <svg class="flex-shrink-0 inline w-2 h-2 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <span class="font-medium">ERROR!</span> {{session('error')}}
+                    </div>
+                </div>
+            </div>
+        @endif
+        <form action="{{ route('actionregister') }}" id="form" method="post">
             @csrf <!-- CSRF protection -->
-            <h1 style="font-weight: bold;">Registrasi</h1>
+            <h1 class="font-bold">Registrasi</h1>
             <div class="input-box d-flex justify-content-between">
                 <input type="text" placeholder="Username" id="username" name="username" />
                 <input type="text" placeholder="Full Name" id="fullName" name="fullName" />
@@ -42,7 +61,7 @@
             </button>
 
             <center>
-                <p>
+                <p class="pb-5">
                     Mempunyai akun? Silahkan <a href="{{ route('login') }}"> login disini!</a>
                 </p>
             </center>

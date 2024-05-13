@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="fontawesome/css/all.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="{{ asset("/css/index.css") }}">
-  <link rel="stylesheet" href="{{ asset("/css/style.css") }}">
+  <link rel="stylesheet" href="{{ asset('/css/index.css') }}">
+  <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
   <title>MrBeans CoffeeBeans Shop</title>
 </head>
 
@@ -22,26 +22,26 @@
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{{ asset("/assets/carousel/1.png") }}" class="d-block w-100 h-100" alt="Kofee Poster">
+            <img src="{{ asset('/assets/carousel/1.png') }}" class="d-block w-100 h-100" alt="Kofee Poster">
           </div>
           <div class="carousel-item">
-            <img src="{{ asset("/assets/carousel/2.png") }}" class="d-block w-100 h-100" alt="Kofee Poster">
+            <img src="{{ asset('/assets/carousel/2.png') }}" class="d-block w-100 h-100" alt="Kofee Poster">
           </div>
           <div class="carousel-item">
-            <img src="{{ asset("/assets/carousel/3.png") }}" class="d-block w-100 h-100" alt="Kofee Poster">
+            <img src="{{ asset('/assets/carousel/3.png') }}" class="d-block w-100 h-100" alt="Kofee Poster">
           </div>
           <div class="carousel-item">
-            <img src="{{ asset("/assets/carousel/4.png") }}" class="d-block w-100 h-100" alt="Kofee Poster">
+            <img src="{{ asset('/assets/carousel/4.png') }}" class="d-block w-100 h-100" alt="Kofee Poster">
           </div>
           <div class="carousel-item">
-            <img src="{{ asset("/assets/carousel/5.png") }}" class="d-block w-100 h-100" alt="Kofee Poster">
+            <img src="{{ asset('/assets/carousel/5.png') }}" class="d-block w-100 h-100" alt="Kofee Poster">
           </div>
         </div>
-        <a class="carousel-control-prev" href="{{ url("#carouselExampleControls") }}" role="button" data-bs-slide="prev">
+        <a class="carousel-control-prev" href="{{ url('#carouselExampleControls') }}" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </a>
-        <a class="carousel-control-next" href="{{ url("#carouselExampleControls") }}" role="button" data-bs-slide="next">
+        <a class="carousel-control-next" href="{{ url('#carouselExampleControls') }}" role="button" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </a>
@@ -49,8 +49,8 @@
     </div>
   </div>
   <div class="row">
-    <a href="{{ url("products.php") }}">
-      <img src="{{ asset("/assets/logo/index1.png") }}" alt="Index poster" width="100%">
+    <a href="{{ url('products.php') }}">
+      <img src="{{ asset('/assets/logo/index1.png') }}" alt="Index poster" width="100%">
     </a>
   </div>
 
@@ -185,7 +185,7 @@
   </div>
 
 
-  <script src="{{ asset("/js/jquery-3.6.0.min.js") }}"></script>
+  <script src="{{ asset('/js/jquery-3.6.0.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
   <script>
     $(document).ready(function() {
