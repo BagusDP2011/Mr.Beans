@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TugasController;
+use App\Models\Product;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,15 +50,18 @@ Route::get('actionlogout', [UserController::class, 'actionlogout'])->name('actio
 
 //Admin Routes
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        $name = "Admin"; // Dummy data
-        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
-        return view('AdminDashboard', compact('name', 'menus'));
-    });
+    Route::get('/dashboard', [AdminController::class, 'allProducts'])->name('AdminProducts');
+
     Route::get('/users', function () {
-        $name = "Admin"; // Dummy data
-        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
+        // $name = "Admin"; // Dummy data
+        // $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
         return view('AdminUser', compact('name', 'menus'));
+    });
+    Route::get('/product', function () {
+        $produk = Product::all();
+        $name = "Admin"; // Dummy data
+        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; 
+        return view('AdminProduct', compact('produk', 'name', 'menus'));
     });
     Route::get('/admindashboard', function () {
         return 'Admin for users ini untuk admin dashboard';
