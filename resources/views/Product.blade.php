@@ -34,7 +34,7 @@
     <!-- Products -->
     <div class="col-span-1 md:col-span-8 bg-white">
       <h4 class="text-center font-bold m-4">Coffee Selection</h4>
-      @if (isset($_SESSION['userID']) && ($_SESSION['userID'] == '1' || $_SESSION['userID'] == 1))
+      @if (auth()->check() && (auth()->user()->role == 'admin'))
       <a href="tambahProductHTML.php">
         <button class="btn btn-info" name="tambahBtn">+ Tambah Produk</button>
       </a>
@@ -52,17 +52,15 @@
               <p class="card-text">Stock = {{ $data['stock'] }} Quantity</p>
               <p class="card-text">Deskripsi:</p>
               <p class="card-text">{{ $data['deskripsi'] }}</p>
-              @if (isset($_SESSION['userID']) && ($_SESSION['userID'] != '1' || $_SESSION['userID'] != 1))
+              @if (auth()->check() && (auth()->user()->role != 'admin'))
               <button type="submit" class="btn btn-success" name="beli">Beli</button>
               @endif
           </form>
-          @if (isset($_SESSION['userID']))
-          @if ($_SESSION['userID'] === '1' || $_SESSION['userID'] === 1)
+          @if (auth()->check() && (auth()->user()->id == 'admin'))
           <form method="post" action="deleteProduct.php">
             <input type="hidden" name="produkID" value="{{ $data['produkID'] }}">
             <button type="submit" class="btn btn-danger" name="deleteBtn">Delete</button>
           </form>
-          @endif
           @endif
         </div>
       </div>
@@ -73,6 +71,7 @@
 
   @include('footer')
 
+  <!-- Jangan di hapus script! Dipakai walaupun pakai Tailwind -->
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
   <script>
