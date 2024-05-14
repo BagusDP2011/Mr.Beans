@@ -53,7 +53,9 @@ Route::prefix('admin')->group(function () {
         return view('AdminDashboard', compact('name', 'menus'));
     });
     Route::get('/users', function () {
-        return 'Admin for users';
+        $name = "Admin"; // Dummy data
+        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
+        return view('AdminUser', compact('name', 'menus'));
     });
     Route::get('/admindashboard', function () {
         return 'Admin for users ini untuk admin dashboard';
