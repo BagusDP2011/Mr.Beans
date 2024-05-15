@@ -13,10 +13,6 @@
     <!-- Isi  -->
     <div class="wrapper text-center mt-16">
         <p class="text-2xl font-bold">KERANJANG SAYA</p>
-        @php
-        $asd = auth()->user()->userID;
-        echo $asd;
-        @endphp
     </div>
     <div class="container mx-auto table-container mt-3">
         <div class="w-full md:w-2/3 mx-auto">

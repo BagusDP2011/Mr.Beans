@@ -43,7 +43,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         @foreach ($produk as $data)
         <div class="card mx-auto mb-4 max-w-sm" style="width: 18rem;">
-          <form method="post" action="{{ route('ActionSendToCart') }}">
+          <form method="post" action="{{ route('ActionSendToCart, ['produkID' => $data->produkID, 'quantity' => $data->quantity])') }}">
             @csrf
             <img src='{{ $data["gambar"] }}' alt="{{ $data['namaProduk'] }}" class="card-img-top">
             <div class="card-body">

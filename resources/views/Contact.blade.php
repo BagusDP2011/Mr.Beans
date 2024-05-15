@@ -23,7 +23,7 @@
                     <div class="container">
                         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
                             <!-- Bagus -->
-                            <div class="p-5 border rounded-lg">
+                            <div class="p-5 border rounded-lg  shadow-lg">
                                 <img src="{{ asset('assets/org/BDP-removebg.png') }}" alt="BagusDP" class="mx-auto"
                                     width="200px" height="300px">
                                 <h2 class="text-xl font-semibold text-center mt-2">Biodata Tim</h2>
@@ -38,7 +38,7 @@
                                 </p>
                             </div>
                             <!-- Ayubi -->
-                            <div class="p-5 border rounded-lg">
+                            <div class="p-5 border rounded-lg  shadow-lg">
                                 <img src="{{ asset('assets/org/2ayub-ok.png') }}" alt="Ayubi" class="mx-auto"
                                     width="200px" height="300px">
                                 <h2 class="text-xl font-semibold text-center mt-2">Biodata Tim</h2>
@@ -53,9 +53,9 @@
                                 </p>
                             </div>
                             <!-- Netty -->
-                            <div class="p-5 border rounded-lg">
-                                <img src="{{ asset('assets/org/1netty-ok.png') }}" alt="Netty" class="mx-auto"
-                                    width="75px" height="100px">
+                            <div class="p-5 border rounded-lg  shadow-lg">
+                                <img src="{{ asset('assets/org/neti2.png') }}" alt="Netty" class="mx-auto"
+                                    width="250px" height="300px">
                                 <h2 class="text-xl font-semibold text-center mt-2">Biodata Tim</h2>
                                 <p class="text-center">
                                     <strong>NIM:</strong> 3312311079 <br />
@@ -68,7 +68,7 @@
                                 </p>
                             </div>
                             <!-- Raja Ulka -->
-                            <div class="p-5 border rounded-lg">
+                            <div class="p-5 border rounded-lg  shadow-lg">
                                 <img src="{{ asset('assets/org/1ulka-ok.png') }}" alt="Ulka" class="mx-auto"
                                     width="100px" height="150px">
                                 <h2 class="text-xl font-semibold text-center mt-2">Biodata Tim</h2>
@@ -83,7 +83,7 @@
                                 </p>
                             </div>
                             <!-- Sheeryl -->
-                            <div class="p-5 border rounded-lg">
+                            <div class="p-5 border rounded-lg  shadow-lg">
                                 <img src="{{ asset('assets/org/1sheeyl-ok.png') }}" alt="Sheeryl" class="mx-auto"
                                     width="150px" height="150px">
                                 <h2 class="text-xl font-semibold text-center mt-2">Biodata Tim</h2>
@@ -98,7 +98,7 @@
                                 </p>
                             </div>
                             <!-- Leornad -->
-                            <div class="p-5 border rounded-lg">
+                            <div class="p-5 border rounded-lg  shadow-lg">
                                 <img src="{{ asset('assets/org/1leor-ok.png') }}" alt="Leornad" class="mx-auto" 
                                 width="125px" height="225px">
                                 <h2 class="text-xl font-semibold text-center mt-2">Biodata Tim</h2>

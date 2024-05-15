@@ -52,3 +52,20 @@
   width: 100%;
   z-index: 1000; /* Ensure it stays on top of other content */
 }
+
+.animasi {
+  position: relative;
+  animation: gerak 4s;
+}
+
+@keyframes gerak {
+  0% {
+      left: 0;
+  }
+  50% {
+      left: 100px; /* Transisi ke kanan */
+  }
+  100% {
+      left: 0; /* Kembali ke kiri */
+  }
+}
