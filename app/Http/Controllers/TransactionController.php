@@ -12,5 +12,8 @@ class TransactionController extends Controller
     function konfirmasi(){
         return view('konfirmasi');
     }
-    
+    function CartAction($userID, $totalHarga){
+        return view('konfirmasi', ['userID' => $userID, 'totalHarga' => $totalHarga]);
+    }
 }
+

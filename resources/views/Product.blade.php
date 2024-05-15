@@ -43,23 +43,30 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         @foreach ($produk as $data)
         <div class="card mx-auto mb-4 max-w-sm" style="width: 18rem;">
-          <form method="post" action="addToCart.php">
+          <form method="post" action="{{ route('ActionSendToCart') }}">
+            @csrf
             <img src='{{ $data["gambar"] }}' alt="{{ $data['namaProduk'] }}" class="card-img-top">
             <div class="card-body">
-              <h5 class="card-title">{{ $data['namaProduk'] }}</h5>
+              <h5 class="card-title font-bold">{{ $data['namaProduk'] }}</h5>
               <input type="hidden" name="produkID" value="{{ $data['produkID'] }}">
+              <input type="hidden" name="quantity" value="1">
               <p class="card-text">Harga = Rp. {{ number_format($data['harga']) }}</p>
               <p class="card-text">Stock = {{ $data['stock'] }} Quantity</p>
               <p class="card-text">Deskripsi:</p>
               <p class="card-text">{{ $data['deskripsi'] }}</p>
               @if (auth()->check() && (auth()->user()->role != 'admin'))
-              <button type="submit" class="btn btn-success" name="beli">Beli</button>
+              <div class="pt-1 flex flex-col items-center">
+                <button type="submit" class="btn btn-success" name="beli">Beli</button>
+              </div>
               @endif
           </form>
           @if (auth()->check() && (auth()->user()->id == 'admin'))
           <form method="post" action="deleteProduct.php">
+            @csrf
             <input type="hidden" name="produkID" value="{{ $data['produkID'] }}">
-            <button type="submit" class="btn btn-danger" name="deleteBtn">Delete</button>
+            <div class="pt-1 flex flex-col items-center">
+              <button type="submit" class="btn btn-danger" name="deleteBtn">Delete</button>
+            </div>
           </form>
           @endif
         </div>

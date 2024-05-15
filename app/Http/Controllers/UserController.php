@@ -7,7 +7,6 @@ use App\Models\User; // Import the User model
 use Illuminate\Support\Facades\Hash; // Import the Hash facade
 use Illuminate\Support\Facades\Auth;
 // use Session;
-use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -77,12 +76,13 @@ class UserController extends Controller
 
         try {
             if (Auth::attempt($data)) {
+                session()->flash('message', 'Login Berhasil!');
                 return redirect('/');
             } else {
                 throw new \Exception('Username atau Password Salah');
             }
         } catch (\Exception $e) {
-            Session::flash('error', $e->getMessage());
+            session()->flash('error', $e->getMessage());
             return redirect('login');
         }
         
@@ -111,11 +111,11 @@ class UserController extends Controller
                 // 'active' => 1
             ]);
     
-            Session::flash('message', 'Register Berhasil. Silahkan Login!');
+            session()->flash('message', 'Register Berhasil. Silahkan Login!');
             return redirect('login');
         } catch (\Exception $e) {
             // Handle the exception
-            Session::flash('error', 'Error occurred while registering user: ' . $e->getMessage());
+            session()->flash('error', 'Error occurred while registering user: ' . $e->getMessage());
             return redirect('register')->withInput();
         }
     }
