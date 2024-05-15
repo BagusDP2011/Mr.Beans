@@ -1,8 +1,8 @@
-@include('koneksi')
 
-@if ($_SERVER["REQUEST_METHOD"] == "POST")
+
+@if ($_SERVER["REQUEST_METHOD"] == "POST')
     @php
-    @include('koneksi')
+    
         $username = request()->input('username');
         $fullname = request()->input('fullName');
         $password = request()->input('password');
@@ -16,7 +16,7 @@ a
         $checkUserResult = $conn->query($checkUserQuery);
 
         if ($checkUserResult->num_rows > 0) {
-            header("Location: regist.php?error=user_exists");
+            header('Location: regist.php?error=user_exists');
             exit();
         } else {
             if ($conn->query($sql) === TRUE) {
