@@ -1,9 +1,22 @@
-<html>
-    <div>
-        <!-- Very little is needed to make a happy life. - Marcus Aurelius -->
-    <h1>List Barang</h1>
-    <p>Kode Barang: {{$id}}</p>
-    <p>Nama Barang: {{$nama}}</p>
-    </div>
+@extends('layouts.list')
 
-</html>
+@section('title', 'ini adalah judul pada meta')
+@section('content')
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Produk</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach($data as $post)
+        <tr>
+            <td>{{$post['id']}}</td>
+            <td>{{$post['produk']}}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+@endsection
