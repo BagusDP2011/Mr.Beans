@@ -86,6 +86,7 @@
                     <h6>0174-0109-7205-507</h6>
                 </div>
             </div>
+            @include('PaymentGatewayMidtrans')
 
             <form class="mb-4" action="lastProcess.php" method="POST">
                 @isset($produkIDs)
@@ -107,11 +108,12 @@
                 @endisset
 
                 <input type="hidden" name="tanggalBayar" value="{{ date('Y-m-d') }}">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">Kembali ke Halaman Utama</button>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold pb-2 px-4 rounded mt-8">Batalkan dan Kembali ke Halaman Utama</button>
             </form>
         </div>
     </div>
     @include('footer')
+
 </body>
 
 </html>
