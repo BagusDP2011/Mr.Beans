@@ -9,10 +9,6 @@ $user = Auth::user();
 <link rel="stylesheet" href="{{ asset('/css/index.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
-<div class="mt-4 pt-4">
-    @include('Session')
-</div>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-3">
     <div class="container mx-auto">
         <h3>

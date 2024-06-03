@@ -32,8 +32,12 @@ Route::get('/reseller', [HomeController::class, 'reseller'])->name('reseller');
 
 //Transactions Routes
 Route::get('/cart', [TransactionController::class, 'cart'])->name('cart');
-Route::get('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
+Route::post('/cart/action/{userID}/{totalHarga}', [TransactionController::class, 'CartAction'])->name('CartAction');
+Route::post('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
 // Route::post('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
+Route::get('/payment/success', [TransactionController::class, 'paymentSuccess'])->name('PaymentSuccess');
+Route::get('/payment/pending', [TransactionController::class, 'paymentPending'])->name('PaymentPending');
+Route::get('/payment/error', [TransactionController::class, 'paymentError'])->name('PaymentError');
 
 //User Routes
 Route::get('/register', [UserController::class, 'register'])->name('register');
@@ -42,7 +46,7 @@ Route::get('/user/{id}', [UserController::class, 'userDetail']);
 // Route::get('/', [LoginController::class, 'login'])->name('login');
 
 //Actions
-Route::post('actionlogin', [UserController::class, 'actionlogin'])->name('actionlogin');
+Route::post('login/action', [UserController::class, 'actionlogin'])->name('actionlogin');
 Route::post('register/action', [UserController::class, 'actionregister'])->name('actionregister');
 
 
@@ -60,7 +64,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/product', function () {
         $produk = Product::all();
         $name = "Admin"; // Dummy data
-        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; 
+        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users'];
         return view('AdminProduct', compact('produk', 'name', 'menus'));
     });
     Route::get('/admindashboard', function () {
@@ -68,9 +72,11 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-//Products Routes
+//Products Routes/
 Route::prefix('product')->group(function () {
     Route::get('/', [ProductController::class, 'allProducts'])->name('products');
+    Route::post('/sendtocart/{produkID}/{quantity}', [ProductController::class, 'ActionSendToCart'])->name('ActionSendToCart');
+    Route::get('/deletefromcart/{cartID}/{produkID}/{quantity}', [ProductController::class, 'ActionDeleteFromCart'])->name('ActionDeleteFromCart');
     Route::get('/detail/{id}/{nama}', [ProductController::class, 'detailProduct']);
 });
 
@@ -90,10 +96,10 @@ Route::get('/aldo1', function () {
 Route::get('/aldo2', function () {
     return view('aldo2');
 });
+
 Route::get('/aldodashboard1', function () {
     return view('aldodashboard1');
 });
-
 
 //Route 404 Penting!
 Route::fallback(function () {

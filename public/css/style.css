@@ -29,4 +29,43 @@
   margin-top: 100px;
   color: black;
 }
+.wrapper-konfirmasi {
+  margin: 50px;
+  margin-top: 50px;
+  color: black;
+}
 
+.custom-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  width: 80%;
+  max-width: 600px;
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.animasi {
+  position: relative;
+  animation: gerak 4s;
+}
+
+@keyframes gerak {
+  0% {
+      left: 0;
+  }
+  50% {
+      left: 100px; /* Transisi ke kanan */
+  }
+  100% {
+      left: 0; /* Kembali ke kiri */
+  }
+}

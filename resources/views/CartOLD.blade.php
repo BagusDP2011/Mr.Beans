@@ -27,24 +27,39 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                    auth()->check();
+                    $id = auth()->user()->userID;
+                    $query = DB::table('cart')
+                    ->join('produk', 'cart.produkID', '=', 'produk.produkID')
+                    ->where('cart.userID', $id)
+                    ->orderBy('produk.produkID', 'ASC')
+                    ->get();
+                    $no = 1;
+                    $totalharga = 0;
+                    @endphp
+
                     @foreach ($query as $data)
                     <tr class="text-center border-t">
                         <td class="p-2">{{ $no++ }}</td>
-                        <td class="p-2">{{ $data->product->namaProduk }}</td>
-                        <td class="p-2">Rp. {{ number_format($data->product->harga) }}</td>
+                        <td class="p-2">{{ $data->namaProduk }}</td>
+                        <td class="p-2">Rp. {{ number_format($data->harga) }}</td>
                         <td class="p-2">{{ $data->quantity }} pcs</td>
                         <td class="p-2 flex justify-center space-x-2">
-                            <form action="{{ route('ActionSendToCart', ['produkID' => $data->product->produkID, 'quantity' => $data->quantity]) }}" method="POST">
+                            <form action="{{ route('ActionSendToCart', ['produkID' => $data->produkID, 'quantity' => $data->quantity]) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn bg-blue-500 text-white px-4 py-2 rounded">Tambah</button>
                             </form>
 
-                            <form action="{{ route('ActionDeleteFromCart', ['cartID' => $data->cartID, 'produkID' => $data->product->produkID, 'quantity' => 1]) }}" method="GET">
+                            <form action="{{ route('ActionDeleteFromCart', ['cartID' => $data->cartID]) }}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn bg-red-500 text-white px-4 py-2 rounded" onclick="return confirm('Yakin untuk hapus???')">Hapus</button>
                             </form>
 
                         </td>
+                        @php
+                        $totalharga += ($data->harga * $data->quantity);
+                        @endphp
                     </tr>
                     @endforeach
                 </tbody>
