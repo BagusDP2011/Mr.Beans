@@ -85,7 +85,6 @@ class UserController extends Controller
             session()->flash('error', $e->getMessage());
             return redirect('login');
         }
-        
     }
 
     public function actionregister(Request $request)
