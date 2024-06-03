@@ -51,11 +51,11 @@ Route::get('actionlogout', [UserController::class, 'actionlogout'])->name('actio
 //Admin Routes
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'allProducts'])->name('AdminProducts');
-
-    Route::get('/users', function () {
-        // $name = "Admin"; // Dummy data
-        // $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
-        return view('AdminUser', compact('name', 'menus'));
+    Route::get('/users', [AdminController::class, 'index'])->name('AdminUser');
+    Route::get('/usersprofile', function () {
+         $name = "Admin"; // Dummy data
+         $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
+        return view('AdminDashboardHeader', compact('name', 'menus'));
     });
     Route::get('/product', function () {
         $produk = Product::all();

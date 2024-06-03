@@ -1,3 +1,7 @@
+@php
+$user = Auth::user();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +33,7 @@
     <div class="p-4 flex items-center">
         <img src="{{ asset('./assets/additional/avatar.jpg') }}" class="rounded-lg w-16 h-16" alt="Profile Picture">
         <div class="ml-4">
-            <span class="block font-semibold">Welcome, <strong>{{ $name }}</strong></span>
+            <span class="block font-semibold">Welcome, <strong>Admin</strong></span>
             <div class="flex mt-1">
                 <a href="#" class="mr-2 text-gray-600 hover:text-gray-900"><i class="fa fa-envelope"></i></a>
                 <a href="#" class="mr-2 text-gray-600 hover:text-gray-900"><i class="fa fa-user"></i></a>
@@ -40,6 +44,9 @@
     <hr class="my-2">
     <div class="p-4">
         <h5 class="font-semibold">Dashboard</h5>
+        @php
+        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users'];
+        @endphp
         @foreach($menus as $menu)
             <a href="#" class="block py-2 px-4 mt-2 bg-gray-200 text-gray-800 rounded-lg text-center hover:bg-gray-300">{{ $menu }}</a>
         @endforeach
