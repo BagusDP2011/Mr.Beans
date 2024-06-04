@@ -22,18 +22,21 @@
           /* You may add your own implementation here */
           console.log("Pending");
           alert("Waiting your payment!");
+          window.location.href = "{{ route('PaymentPending') }}";
           console.log(result);
         },
         onError: function(result) {
           /* You may add your own implementation here */
           console.log("Error");
           alert("Payment failed!");
+          window.location.href = "{{ route('PaymentError') }}";
           console.log(result);
         },
         onClose: function() {
           console.log("Penutup");
           /* You may add your own implementation here */
           alert('you closed the popup without finishing the payment');
+          window.location.href = "{{ route('PaymentError') }}";
         }
       })
     });
