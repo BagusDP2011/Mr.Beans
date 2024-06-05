@@ -9,7 +9,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             // Set timeout to redirect to the dashboard after 5 seconds
             setTimeout(function () {
-                window.location.href = "{{ route('home') }}";
+                window.location.href = "{{ route('konfirmasi') }}";
             }, 5000); // 5000 milliseconds = 5 seconds
         });
     </script>
