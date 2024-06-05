@@ -40,7 +40,7 @@ $user = Auth::user();
     </style>
 </head>
 
-<body class="bg-gray-100 flex flex-col min-h-screen" onload="realtimeClock()">
+<body class="bg-gray-100 flex flex-col min-h-screen overflow-x-hidden" onload="realtimeClock()">
 
     <!-- Top container -->
     <nav class="bg-gray-900 text-white">
@@ -72,7 +72,7 @@ $user = Auth::user();
         </div>
         <hr class="my-2">
         <div class="p-4">
-            <h5 class="font-semibold">Dashboard </h5>
+            <h5 class="font-semibold">Dashboard Menu</h5>
             @php
             $menus = ['Dashboard', 'Products', 'Penjualan', 'Resi', 'User'];
             @endphp

@@ -167,37 +167,43 @@
         </div>
     </div>
 </div>
+<div class="items-end self-end m-5 mr-10">
+    <button class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
+        Cetak Resi
+    </button>
+</div>
 <div id="divKosong" class="" height='200px'></div>
 @include('AdminDashboardFooter')
 
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const modalToggles = document.querySelectorAll('[data-modal-toggle]');
+    document.addEventListener('DOMContentLoaded', function() {
+        const modalToggles = document.querySelectorAll('[data-modal-toggle]');
 
-    modalToggles.forEach(toggle => {
-        toggle.addEventListener('click', function() {
-            const targetModalId = this.getAttribute('data-modal-target');
-            const modal = document.getElementById(targetModalId);
+        modalToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const targetModalId = this.getAttribute('data-modal-target');
+                const modal = document.getElementById(targetModalId);
 
-            if (modal) {
-                modal.classList.toggle('hidden');
-                modal.classList.toggle('flex');
-            }
+                if (modal) {
+                    modal.classList.toggle('hidden');
+                    modal.classList.toggle('flex');
+                }
+            });
+        });
+
+        const modalCloses = document.querySelectorAll('[data-modal-hide]');
+
+        modalCloses.forEach(close => {
+            close.addEventListener('click', function() {
+                const targetModalId = this.getAttribute('data-modal-hide');
+                const modal = document.getElementById(targetModalId);
+
+                if (modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }
+            });
         });
     });
-
-    const modalCloses = document.querySelectorAll('[data-modal-hide]');
-
-    modalCloses.forEach(close => {
-        close.addEventListener('click', function() {
-            const targetModalId = this.getAttribute('data-modal-hide');
-            const modal = document.getElementById(targetModalId);
-
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }
-        });
-    });
-});
 </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Product;
+use App\Models\TransactionHistory;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -28,8 +29,21 @@ class AdminController extends Controller
 
     function allPenjualan()
     {
-        return view('AdminPenjualan');
+        // Fetch transaction histories with their related user models
+        $transactionHistories = TransactionHistory::with('user')->get();
+
+        // Fetch related products for each transaction history
+        $transactionHistories->each(function ($transactionHistory) {
+            if (is_array($transactionHistory->produkID) && !empty($transactionHistory->produkID)) {
+                $transactionHistory->products = Product::whereIn('produkID', $transactionHistory->produkID)->get();
+            } else {
+                $transactionHistory->products = collect(); // Empty collection if no products found
+            }
+        });
+
+        return view('AdminPenjualan', ['TH' => $transactionHistories]);
     }
+
 
     function allResi()
     {

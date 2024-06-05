@@ -85,12 +85,113 @@
                 </div>
             </div>
 
+
+            <script id="chartRevenue">
+                const options = {
+                    series: [{
+                            name: "Income",
+                            color: "#31C48D",
+                            data: ["1420", "1620", "1820", "1420", "1650", "2120"],
+                        },
+                        {
+                            name: "Expense",
+                            data: ["788", "810", "866", "788", "1100", "1200"],
+                            color: "#F05252",
+                        }
+                    ],
+                    chart: {
+                        sparkline: {
+                            enabled: false,
+                        },
+                        type: "bar",
+                        width: "100%",
+                        height: 400,
+                        toolbar: {
+                            show: false,
+                        }
+                    },
+                    fill: {
+                        opacity: 1,
+                    },
+                    plotOptions: {
+                        bar: {
+                            horizontal: true,
+                            columnWidth: "100%",
+                            borderRadiusApplication: "end",
+                            borderRadius: 6,
+                            dataLabels: {
+                                position: "top",
+                            },
+                        },
+                    },
+                    legend: {
+                        show: true,
+                        position: "bottom",
+                    },
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    tooltip: {
+                        shared: true,
+                        intersect: false,
+                        formatter: function(value) {
+                            return "$" + value
+                        }
+                    },
+                    xaxis: {
+                        labels: {
+                            show: true,
+                            style: {
+                                fontFamily: "Inter, sans-serif",
+                                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                            },
+                            formatter: function(value) {
+                                return "$" + value
+                            }
+                        },
+                        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                        axisTicks: {
+                            show: false,
+                        },
+                        axisBorder: {
+                            show: false,
+                        },
+                    },
+                    yaxis: {
+                        labels: {
+                            show: true,
+                            style: {
+                                fontFamily: "Inter, sans-serif",
+                                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                            }
+                        }
+                    },
+                    grid: {
+                        show: true,
+                        strokeDashArray: 4,
+                        padding: {
+                            left: 2,
+                            right: 2,
+                            top: -20
+                        },
+                    },
+                    fill: {
+                        opacity: 1,
+                    }
+                }
+
+                if (document.getElementById("bar-chart") && typeof ApexCharts !== 'undefined') {
+                    const chart = new ApexCharts(document.getElementById("bar-chart"), options);
+                    chart.render();
+                }
+            </script>
+
             <div id='chartAreaTraffic'>
                 <div class="max-w-sm w-full bg-white rounded-lg shadow-lg dark:bg-gray-800 p-4 md:p-6">
                     <div class="flex justify-between items-start w-full">
                         <div class="flex-col items-center">
                             <div class="flex items-center mb-1">
-                                <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Website traffic</h5>
+                                <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Traffic Area Pembeli</h5>
                                 <svg data-popover-target="chart-info" data-popover-placement="bottom" class="w-3.5 h-3.5 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z" />
                                 </svg>
@@ -107,7 +208,7 @@
                                     <div data-popper-arrow></div>
                                 </div>
                             </div>
-                            <button id="dateRangeButton" data-dropdown-toggle="dateRangeDropdown" data-dropdown-ignore-click-outside-class="datepicker" type="button" class="inline-flex items-center text-blue-700 dark:text-blue-600 font-medium hover:underline">31 Nov - 31 Dev <svg class="w-3 h-3 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <button id="dateRangeButton" data-dropdown-toggle="dateRangeDropdown" data-dropdown-ignore-click-outside-class="datepicker" type="button" class="inline-flex items-center text-blue-700 dark:text-blue-600 font-medium hover:underline">01 Jan - 31 June <svg class="w-3 h-3 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                                 </svg>
                             </button>
@@ -213,12 +314,78 @@
                 </div>
             </div>
 
+
+            <script id="chartArea">
+                const getChartAreaOptions = () => {
+                    return {
+                        series: [52.8, 26.8, 20.4],
+                        colors: ["#1C64F2", "#16BDCA", "#9061F9"],
+                        chart: {
+                            height: 420,
+                            width: "100%",
+                            type: "pie",
+                        },
+                        stroke: {
+                            colors: ["white"],
+                            lineCap: "",
+                        },
+                        plotOptions: {
+                            pie: {
+                                labels: {
+                                    show: true,
+                                },
+                                size: "100%",
+                                dataLabels: {
+                                    offset: -25
+                                }
+                            },
+                        },
+                        labels: ["Batam", "Medan", "Jakarta"],
+                        dataLabels: {
+                            enabled: true,
+                            style: {
+                                fontFamily: "Inter, sans-serif",
+                            },
+                        },
+                        legend: {
+                            position: "bottom",
+                            fontFamily: "Inter, sans-serif",
+                        },
+                        yaxis: {
+                            labels: {
+                                formatter: function(value) {
+                                    return value + "%"
+                                },
+                            },
+                        },
+                        xaxis: {
+                            labels: {
+                                formatter: function(value) {
+                                    return value + "%"
+                                },
+                            },
+                            axisTicks: {
+                                show: false,
+                            },
+                            axisBorder: {
+                                show: false,
+                            },
+                        },
+                    }
+                }
+
+                if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
+                    const chart = new ApexCharts(document.getElementById("pie-chart"), getChartAreaOptions());
+                    chart.render();
+                }
+            </script>
+
             <div id="chartStatus">
                 <div class="max-w-sm w-full bg-white rounded-lg shadow-lg dark:bg-gray-800 p-4 md:p-6">
                     <div class="flex justify-between mb-3">
                         <div class="flex items-center">
                             <div class="flex justify-center items-center">
-                                <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Your team's progress</h5>
+                                <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Pending Pengiriman</h5>
                                 <svg data-popover-target="chart-info" data-popover-placement="bottom" class="w-3.5 h-3.5 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white cursor-pointer ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z" />
                                 </svg>
@@ -239,18 +406,22 @@
                     </div>
 
                     <div class="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
-                        <div class="grid grid-cols-3 gap-3 mb-2">
+                        <div class="grid grid-cols-2 gap-3 mb-2">
                             <dl class="bg-orange-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
                                 <dt class="w-8 h-8 rounded-full bg-orange-100 dark:bg-gray-500 text-orange-600 dark:text-orange-300 text-sm font-medium flex items-center justify-center mb-1">12</dt>
-                                <dd class="text-orange-600 dark:text-orange-300 text-sm font-medium">To do</dd>
+                                <dd class="text-orange-600 dark:text-orange-300 text-sm font-medium text-center">Perlu Dibungkus</dd>
                             </dl>
                             <dl class="bg-teal-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
                                 <dt class="w-8 h-8 rounded-full bg-teal-100 dark:bg-gray-500 text-teal-600 dark:text-teal-300 text-sm font-medium flex items-center justify-center mb-1">23</dt>
-                                <dd class="text-teal-600 dark:text-teal-300 text-sm font-medium">In progress</dd>
+                                <dd class="text-teal-600 dark:text-teal-300 text-sm font-medium text-center">Sedang Diproses</dd>
                             </dl>
                             <dl class="bg-blue-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
                                 <dt class="w-8 h-8 rounded-full bg-blue-100 dark:bg-gray-500 text-blue-600 dark:text-blue-300 text-sm font-medium flex items-center justify-center mb-1">64</dt>
-                                <dd class="text-blue-600 dark:text-blue-300 text-sm font-medium">Done</dd>
+                                <dd class="text-blue-600 dark:text-blue-300 text-sm font-medium text-center">Telah Dikirim</dd>
+                            </dl>
+                            <dl class="bg-blue-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
+                                <dt class="w-8 h-8 rounded-full bg-blue-100 dark:bg-gray-500 text-blue-600 dark:text-blue-300 text-sm font-medium flex items-center justify-center mb-1">99</dt>
+                                <dd class="text-blue-600 dark:text-blue-300 text-sm font-medium text-center">Total Pesanan</dd>
                             </dl>
                         </div>
                         <button data-collapse-toggle="more-details" type="button" class="hover:underline text-xs text-gray-500 dark:text-gray-400 font-medium inline-flex items-center">Show more details <svg class="w-2 h-2 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -324,7 +495,7 @@
         <script id="chartStatus">
             const getChartStatusOptions = () => {
                 return {
-                    series: [90, 85, 70],
+                    series: [ ((12+64)/99*100), ((23+64)/99*100), (64/99*100)],
                     colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
                     chart: {
                         height: "380px",
@@ -358,7 +529,7 @@
                             bottom: -20,
                         },
                     },
-                    labels: ["Done", "In progress", "To do"],
+                    labels: ["Telah Dikirim", "Sedang Diproses", "Perlu Dibungkus"],
                     legend: {
                         show: true,
                         position: "bottom",
@@ -374,7 +545,7 @@
                         show: false,
                         labels: {
                             formatter: function(value) {
-                                return value + '%';
+                                return value.toFixed(2) + '%';
                             }
                         }
                     }
@@ -387,170 +558,6 @@
             }
         </script>
 
-        <script id="chartRevenue">
-            const options = {
-                series: [{
-                        name: "Income",
-                        color: "#31C48D",
-                        data: ["1420", "1620", "1820", "1420", "1650", "2120"],
-                    },
-                    {
-                        name: "Expense",
-                        data: ["788", "810", "866", "788", "1100", "1200"],
-                        color: "#F05252",
-                    }
-                ],
-                chart: {
-                    sparkline: {
-                        enabled: false,
-                    },
-                    type: "bar",
-                    width: "100%",
-                    height: 400,
-                    toolbar: {
-                        show: false,
-                    }
-                },
-                fill: {
-                    opacity: 1,
-                },
-                plotOptions: {
-                    bar: {
-                        horizontal: true,
-                        columnWidth: "100%",
-                        borderRadiusApplication: "end",
-                        borderRadius: 6,
-                        dataLabels: {
-                            position: "top",
-                        },
-                    },
-                },
-                legend: {
-                    show: true,
-                    position: "bottom",
-                },
-                dataLabels: {
-                    enabled: false,
-                },
-                tooltip: {
-                    shared: true,
-                    intersect: false,
-                    formatter: function(value) {
-                        return "$" + value
-                    }
-                },
-                xaxis: {
-                    labels: {
-                        show: true,
-                        style: {
-                            fontFamily: "Inter, sans-serif",
-                            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-                        },
-                        formatter: function(value) {
-                            return "$" + value
-                        }
-                    },
-                    categories: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                    axisTicks: {
-                        show: false,
-                    },
-                    axisBorder: {
-                        show: false,
-                    },
-                },
-                yaxis: {
-                    labels: {
-                        show: true,
-                        style: {
-                            fontFamily: "Inter, sans-serif",
-                            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-                        }
-                    }
-                },
-                grid: {
-                    show: true,
-                    strokeDashArray: 4,
-                    padding: {
-                        left: 2,
-                        right: 2,
-                        top: -20
-                    },
-                },
-                fill: {
-                    opacity: 1,
-                }
-            }
-
-            if (document.getElementById("bar-chart") && typeof ApexCharts !== 'undefined') {
-                const chart = new ApexCharts(document.getElementById("bar-chart"), options);
-                chart.render();
-            }
-        </script>
-
-        <script id="chartArea">
-            const getChartAreaOptions = () => {
-                return {
-                    series: [52.8, 26.8, 20.4],
-                    colors: ["#1C64F2", "#16BDCA", "#9061F9"],
-                    chart: {
-                        height: 420,
-                        width: "100%",
-                        type: "pie",
-                    },
-                    stroke: {
-                        colors: ["white"],
-                        lineCap: "",
-                    },
-                    plotOptions: {
-                        pie: {
-                            labels: {
-                                show: true,
-                            },
-                            size: "100%",
-                            dataLabels: {
-                                offset: -25
-                            }
-                        },
-                    },
-                    labels: ["Direct", "Organic search", "Referrals"],
-                    dataLabels: {
-                        enabled: true,
-                        style: {
-                            fontFamily: "Inter, sans-serif",
-                        },
-                    },
-                    legend: {
-                        position: "bottom",
-                        fontFamily: "Inter, sans-serif",
-                    },
-                    yaxis: {
-                        labels: {
-                            formatter: function(value) {
-                                return value + "%"
-                            },
-                        },
-                    },
-                    xaxis: {
-                        labels: {
-                            formatter: function(value) {
-                                return value + "%"
-                            },
-                        },
-                        axisTicks: {
-                            show: false,
-                        },
-                        axisBorder: {
-                            show: false,
-                        },
-                    },
-                }
-            }
-
-            if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
-                const chart = new ApexCharts(document.getElementById("pie-chart"), getChartAreaOptions());
-                chart.render();
-            }
-        </script>
     </body>
 </div>
 

@@ -62,10 +62,9 @@ class TransactionHistory extends Model
     {
         return 'string';
     }
-
-    public function products()
+    
+    public function user()
     {
-        return $this->belongsToMany(Product::class, 'produkID')
-            ->withPivot('quantity', 'price', 'created_at', 'updated_at');
+        return $this->belongsTo(User::class, 'userID');
     }
 }
