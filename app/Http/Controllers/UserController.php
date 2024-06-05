@@ -84,9 +84,8 @@ class UserController extends Controller
         } catch (\Exception $e) {
             session()->flash('error', $e->getMessage());
             return redirect('login');
-        }
     }
-
+}
     public function actionregister(Request $request)
     {
         try {
