@@ -77,16 +77,15 @@ class UserController extends Controller
         try {
             if (Auth::attempt($data)) {
                 session()->flash('message', 'Login Berhasil!');
-                return redirect('admin/dashboard');
+                return redirect('/');
             } else {
                 throw new \Exception('Username atau Password Salah');
             }
         } catch (\Exception $e) {
             session()->flash('error', $e->getMessage());
             return redirect('login');
-        }
     }
-
+}
     public function actionregister(Request $request)
     {
         try {
