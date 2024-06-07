@@ -91,25 +91,20 @@ class AdminController extends Controller
                 'gambar' => 'required',
             ]);
 
-            // Find the Product by ISBN
             $Product = Product::where('produkID', $produkID)->first();
 
             if (!$Product) {
-                // Handle Product not found
                 return redirect()->back()->with('error', 'Product not found.');
             }
 
-            // Update the Product with the new data
             $Product->namaProduk = $request->namaProduk;
             $Product->harga = $request->harga;
             $Product->stock = $request->stock;
             $Product->deskripsi = $request->deskripsi;
             $Product->gambar = $request->gambar;
 
-            // Save the updated Product
             $Product->save();
 
-            // Redirect back with success message
             session()->flash('message', 'Product updated successfully.');
             return redirect()->back()->with('success', 'Product updated successfully.');
         } catch (\Exception $e) {

@@ -10,6 +10,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use Midtrans;
 
+use function Laravel\Prompts\alert;
 
 class TransactionController extends Controller
 {
@@ -145,31 +146,46 @@ class TransactionController extends Controller
                 ->where('status', 'pending')
                 ->first();
 
-            // If a pending transaction is found, update its status to "success"
             if ($transaction) {
                 $transaction->status = 'Success';
                 $transaction->save();
 
-                Cart::where('userID', $userID)->delete();
+                $DeleteStock = Product::whereIn('produkID', $transaction->produkID)->get();
+                $cart = Cart::where('userID', $userID)->get();
 
+                if ($DeleteStock->isEmpty()) {
+                    return redirect()->back()->with('error', 'Product not found.');
+                }
+
+                foreach ($DeleteStock as $product) {
+                    $cartItem = $cart->firstWhere('produkID', $product->produkID);
+
+                    if ($cartItem) {
+                        $product->stock -= $cartItem->quantity;
+                        $product->save();
+                        $cartItem->delete();
+                    }
+                }
+                alert('Testing sampe sini');
                 session()->flash('message', 'Transaksi berhasil, silahkan cek email dan tunggu barang sampai. Terima kasih!');
+                return redirect()->route('PaymentSuccess');
             } else {
-                session()->flash('error', 'Tidak ada transaksi yang pending.');
+                session()->flash('message', 'Transaksi berhasil, silahkan cek email dan tunggu barang sampai. Terima kasih!');
+                return redirect()->route('PaymentSuccess');
             }
         } catch (\Exception $e) {
             session()->flash('error', 'Error updating transaction status: ' . $e->getMessage());
+            return view('PaymentError');
         }
-
-        return redirect()->route('home');
     }
 
     public function paymentPending(Request $request)
     {
-        return redirect()->route('konfirmasi')->with('error', 'There was an error processing your payment. Please try again later.');
+        return view('PaymentPending')->with('error', 'There was an error processing your payment. Please try again later.');
     }
 
     public function paymentError(Request $request)
     {
-        return redirect()->route('konfirmasi')->with('error', 'Ada kesalahan saat memproses pesanan anda. Coba lagi nanti.');
+        return view('PaymentError')->with('error', 'Ada kesalahan saat memproses pesanan anda. Coba lagi nanti.');
     }
 }

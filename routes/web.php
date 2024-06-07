@@ -33,6 +33,7 @@ Route::get('/reseller', [HomeController::class, 'reseller'])->name('reseller');
 //Transactions Routes
 Route::get('/cart', [TransactionController::class, 'cart'])->name('cart');
 Route::post('/cart/action/{userID}/{totalHarga}', [TransactionController::class, 'CartAction'])->name('CartAction');
+Route::get('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
 Route::post('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
 // Route::post('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
 Route::get('/payment/success', [TransactionController::class, 'paymentSuccess'])->name('PaymentSuccess');

@@ -79,8 +79,9 @@ $user = Auth::user();
             @foreach($menus as $menu)
             <a href="{{ route('Admin' . $menu) }}" class="block py-2 px-4 mt-2 bg-gray-200 text-gray-800 rounded-lg text-center hover:bg-gray-300">{{ $menu }}</a>
             @endforeach
+            <a href="{{ route('actionlogout') }}" class="block py-2 px-4 mt-2 bg-red-200 text-gray-800 rounded-lg text-center hover:bg-red-300">Logout</a>
         </div>
-        <footer class="w-full bg-gray-200" style="margin-top: 70px;">
+        <footer class="w-full bg-gray-200" style="margin-top: 10px;">
             <div style="width:100%;height:0;">
                 <center>
                     <img src="{{ asset('assets/gif/kopi.gif') }}" alt="Animasi Kopi" width="50%" class="flex justify-center items-center flex-col">
