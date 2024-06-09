@@ -32,10 +32,46 @@
             </table>
         </div>
         <div class="fixed bottom-10 right-10">
-            <button class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
+            <button id="btnCetakResi" class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
                 Cetak Resi
             </button>
         </div>
+        <script>
+    // Mengambil tombol "Cetak Resi" berdasarkan ID
+    const btnCetakResi = document.getElementById('btnCetakResi');
+
+    // Menambahkan event listener untuk menangani klik tombol
+    btnCetakResi.addEventListener('click', async () => {
+        try {
+            // Mengirim permintaan ke server untuk menghasilkan resi PDF
+            const response = await fetch('/cetak-resi', {
+                method: 'GET',
+            });
+
+            // Memeriksa apakah respons adalah PDF
+            if (!response.ok) {
+                throw new Error('Gagal menghasilkan resi PDF');
+            }
+
+            // Membaca respons sebagai blob
+            const blob = await response.blob();
+
+            // Membuat URL objek untuk blob
+            const url = window.URL.createObjectURL(blob);
+
+            // Membuat link untuk menampilkan PDF di browser
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank'; // Buka di jendela/tab baru
+            link.click(); // Klik link untuk menampilkan PDF di browser
+        } catch (error) {
+            console.error(error);
+            alert('Terjadi kesalahan saat mencetak resi');
+        }
+    });
+</script>
+
+
     </body>
 </div>
 @include('AdminDashboardFooter')

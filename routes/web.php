@@ -7,6 +7,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TugasController;
+use App\Http\Controllers\PdfController;
 use App\Models\Product;
 
 
@@ -111,3 +112,9 @@ Route::fallback(function () {
 // Route::fallback(function () {
 //     return 'Page not found';
 // });
+
+//test dlu
+
+
+Route::get('/cetak-resi', [PdfController::class, 'generatePdf'])->name('cetak.resi');
+    
