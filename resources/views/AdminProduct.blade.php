@@ -168,7 +168,7 @@
     </div>
 </div>
 <div class="items-end self-end m-5 mr-10">
-    <button class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
+    <button id="btnCetakResi" class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
         Cetak Resi
     </button>
 </div>
@@ -177,33 +177,26 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const modalToggles = document.querySelectorAll('[data-modal-toggle]');
-
-        modalToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const targetModalId = this.getAttribute('data-modal-target');
-                const modal = document.getElementById(targetModalId);
-
-                if (modal) {
-                    modal.classList.toggle('hidden');
-                    modal.classList.toggle('flex');
-                }
+    const btnCetakResi = document.getElementById('btnCetakResi');
+    btnCetakResi.addEventListener('click', async () => {
+        try {
+            const response = await fetch('/cetak/resi-product', {
+                method: 'GET',
             });
-        });
 
-        const modalCloses = document.querySelectorAll('[data-modal-hide]');
+            if (!response.ok) {
+                throw new Error('Gagal menghasilkan resi PDF');
+            }
 
-        modalCloses.forEach(close => {
-            close.addEventListener('click', function() {
-                const targetModalId = this.getAttribute('data-modal-hide');
-                const modal = document.getElementById(targetModalId);
-
-                if (modal) {
-                    modal.classList.add('hidden');
-                    modal.classList.remove('flex');
-                }
-            });
-        });
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank';
+            link.click();
+        } catch (error) {
+            console.error(error);
+            alert('Terjadi kesalahan saat mencetak resi');
+        }
     });
 </script>

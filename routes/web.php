@@ -126,5 +126,8 @@ Route::fallback(function () {
 //test dlu
 
 
-Route::get('/cetak-resi', [PdfController::class, 'generatePdf'])->name('cetak.resi');
-    
+Route::prefix('cetak')->group(function () {
+    Route::get('/resi', [PdfController::class, 'generatePdf'])->name('cetak.resi.user');
+    Route::get('/resi-penjualan', [PdfController::class, 'cetakResi'])->name('cetak.resi.list.penjualan');
+    Route::get('/resi-product', [PdfController::class, 'productPDF'])->name('cetak.resi.product');
+});

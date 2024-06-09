@@ -48,10 +48,35 @@
                 </tbody>
             </table>
             <div class="fixed bottom-10 right-10">
-                <button class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
+                <button id="btnCetakResi" class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
                     Cetak Resi
                 </button>
             </div>
+            <script>
+    const btnCetakResi = document.getElementById('btnCetakResi');
+    btnCetakResi.addEventListener('click', async () => {
+        try {
+            const response = await fetch('/cetak/resi-penjualan', {
+                method: 'GET',
+            });
+
+            if (!response.ok) {
+                throw new Error('Gagal menghasilkan resi PDF');
+            }
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank';
+            link.click();
+        } catch (error) {
+            console.error(error);
+            alert('Terjadi kesalahan saat mencetak resi');
+        }
+    });
+</script>
+
         </div>
     </body>
 </div>

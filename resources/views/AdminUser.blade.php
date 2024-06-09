@@ -44,7 +44,7 @@
     btnCetakResi.addEventListener('click', async () => {
         try {
             // Mengirim permintaan ke server untuk menghasilkan resi PDF
-            const response = await fetch('/cetak-resi', {
+            const response = await fetch('/cetak/resi', {
                 method: 'GET',
             });
 

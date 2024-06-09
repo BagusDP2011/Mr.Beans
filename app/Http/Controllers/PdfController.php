@@ -5,17 +5,26 @@ use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
+use App\Models\TransactionHistory;
+use App\Models\Product;
+
 
 
 class PdfController extends Controller
 {
     public function cetakResi()
     {
-        $data = ['title' => 'Welcome to Laravel-DomPDF'];
+        // Ambil data transaksi dari database
+        $TH = TransactionHistory::all();
 
-        $pdf = PDF::loadView('myPDF', $data);
+        // Buat HTML untuk tabel transaksi menggunakan partial Blade
+        $html = View::make('TABEL CETAK RESI.list_penjualan_tabel', compact('TH'))->render();
 
-        return $pdf->download('myPDF.pdf');
+        // Generate PDF
+        $pdf = PDF::loadHTML($html);
+
+        // Download PDF
+        return $pdf->download('resi_penjualan.pdf');
     }
 
     public function generatePdf()
@@ -33,5 +42,18 @@ class PdfController extends Controller
         // Download PDF
         return $pdf->download('daftar_pengguna.pdf');
     }
+    public function productPDF()
+    {
+        // Ambil data produk dari database
+        $produk = Product::all();
 
+        // Buat HTML untuk tabel produk menggunakan partial Blade
+        $html = view('TABEL CETAK RESI.product_table_pdf', compact('produk'))->render();
+
+        // Generate PDF
+        $pdf = PDF::loadHTML($html);
+
+        // Download PDF
+        return $pdf->download('daftar_produk.pdf');
+    }
 }
