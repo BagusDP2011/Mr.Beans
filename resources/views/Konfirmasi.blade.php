@@ -6,6 +6,7 @@
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/pembayaran.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/TailwindStyles.css') }}" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -14,63 +15,44 @@
     @include('header')
 
     <!-- Isi  -->
-    <div class="wrapper-konfirmasi flex flex-col items-center justify-center bg-yellow-100 rounded-2xl">
-        <div class="bg-warning py-3 font-bold w-full rounded-2xl text-center">MOHON SEGERA SELESAIKAN PEMBAYARAN</div>
-        <div class="container text-center align-center">
-            <?php $tomorrowDate = new DateTime('tomorrow'); ?>
-            <p class="py-2">Transfer dana sebelum tanggal <b>{{ $tomorrowDate->format('d-M-Y') }}</b></p>
-            <div class="timer flex justify-center items-center">
-                <ul class="countdown flex">
-                    <li><i id="days">00</i>Day</li>
-                    <li><i id="hours">00</i>Hour</li>
-                    <li><i id="minutes">00</i>Min</li>
-                    <li><i id="seconds">00</i>Sec</li>
-                </ul>
-            </div>
-            <script>
-                function countdown(endDate) {
-                    let interval = setInterval(function() {
-                        let now = new Date().getTime();
-                        let distance = endDate - now;
+    <div class="wrapper-konfirmasi flex flex-col items-center justify-center bg-yellow-100 rounded-2xl grid grid-cols-3 gap-3">
+        <div id="col1" class="col-span-1">
+            <center>
 
-                        if (distance <= 0) {
-                            clearInterval(interval);
-                            document.getElementById('countdown').innerHTML = "<li>Countdown Finished</li>";
-                            return;
-                        }
+                <div id="container kopi-uap">
+                    <div class="steam" id="steam1"> </div>
+                    <div class="steam" id="steam2"> </div>
+                    <div class="steam" id="steam3"> </div>
+                    <div class="steam" id="steam4"> </div>
 
-                        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    <div id="cup">
+                        <div id="cup-body">
+                            <div id="cup-shade"></div>
+                        </div>
+                        <div id="cup-handle"></div>
+                    </div>
 
-                        document.getElementById('days').innerHTML = formatTime(days);
-                        document.getElementById('hours').innerHTML = formatTime(hours);
-                        document.getElementById('minutes').innerHTML = formatTime(minutes);
-                        document.getElementById('seconds').innerHTML = formatTime(seconds);
-                    }, 1000);
-                }
+                    <div id="saucer"></div>
 
-                function formatTime(time) {
-                    return time < 10 ? "0" + time : time;
-                }
+                    <div id="shadow"></div>
+                </div>
+        </div>
+        </center>
+        <div id="col2" class="border-l-2 border-black px-4 my-4 col-span-2 text-center">
+            <div class="bg-warning py-3 font-bold w-full rounded-2xl">MOHON SEGERA SELESAIKAN PEMBAYARAN</div>
 
-                let tomorrow = "{{ date('Y-m-d', strtotime('+1 day')) }}";
-                let endDate = new Date(tomorrow).getTime();
-                countdown(endDate);
-            </script>
-
-            <p class="mt-3 pt-3 w-full text-center" style="border-top: 2px solid black;">JUMLAH YANG HARUS DI BAYAR</p>
-            @if ($totalHarga !== null)
-            <?php $totalHargaBayar = $totalHarga + rand(0, 200); ?>
+            <p class="mt-3 pt-3 w-full" style="border-top: 2px solid black;">JUMLAH YANG HARUS DI BAYAR</p>
+            @if (isset($totalHarga) && $totalHarga !== null)
             <p class="text-blue-600 text-3xl py-2 font-bold">Total Harga : Rp. {{ number_format($totalHargaBayar) }}</p>
-            @else
-            <p>Total Harga is tidak tersedia.</p>
-            @endif
-            <h6>Harap transfer sesuai jumlah pembayaran dengan digit terakhirnya.</h6>
+            <h6>Harap transfer sesuai jumlah pembayaran dengan sesuai.</h6>
             <h6>Jika jumlah pembayaran tidak sesuai, proses verifikasi pembayaran anda akan terhambat.</h6>
+            @else
+            <p class="text-3xl py-2 font-bold">Total Harga is tidak tersedia.</p>
+            <h6>Ada kemungkinan anda mengakses link ini tanpa melakukan pembelian.</h6>
+            <h6>Silahkan login terlebih dahulu, pergi ke keranjang anda, dan klik tombol bayar untuk melakukan pembayaran.</h6>
+            @endif
 
-            <div class="my-3 w-full text-center" style="border-top: 2px solid black;"></div>
+            <div class="my-3 w-full" style="border-top: 2px solid black;"></div>
 
             <div class="grid grid-cols-2 gap-4 justify-center">
                 <div class="text-center">
@@ -86,34 +68,15 @@
                     <h6>0174-0109-7205-507</h6>
                 </div>
             </div>
+            @if (isset($totalHarga) && $totalHarga !== null)
             @include('PaymentGatewayMidtrans')
-
-            <form class="mb-4" action="lastProcess.php" method="POST">
-                @isset($produkIDs)
-                @foreach ($produkIDs as $produkID)
-                <input type="hidden" name="produkIDs[]" value="{{ $produkID }}">
-                @endforeach
-                @endisset
-
-                @isset($produkID)
-                <input type="hidden" name="produkID" value="{{ $produkID }}">
-                @else
-                <input type="hidden" name="produkID" value="0"> <!-- Nilai default jika $produkID tidak terdefinisi -->
-                @endisset
-
-                @isset($totalHargaBayar)
-                <input type="hidden" name="totalHargaBayar" value="{{ $totalHargaBayar }}">
-                @else
-                <input type="hidden" name="totalHargaBayar" value="0"> <!-- Nilai default jika $totalHargaBayar tidak terdefinisi -->
-                @endisset
-
-                <input type="hidden" name="tanggalBayar" value="{{ date('Y-m-d') }}">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold pb-2 px-4 rounded mt-8">Batalkan dan Kembali ke Halaman Utama</button>
-            </form>
+            @else
+            <data id="divkosong"></data>
+            @endif
+            <button type="submit" onclick="window.location.href=`{{ route('products') }}`" class="bg-blue-500 hover:bg-blue-700 text-white font-bold pb-2 px-4 my-4 rounded mt-8">Batalkan dan Kembali ke Halaman Produk</button>
         </div>
     </div>
     @include('footer')
-
 </body>
 
 </html>

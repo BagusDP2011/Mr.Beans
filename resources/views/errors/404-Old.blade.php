@@ -5,7 +5,6 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-   <link rel="stylesheet" href="{{ asset('css/TailwindStyles.css') }}">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
    <style>
@@ -28,26 +27,7 @@
             <div class="w-full px-4">
                <div class="mx-auto max-w-[400px] text-center">
                   <center>
-                     <!-- <img src="{{ asset('/assets/404/clown.png') }}" alt="Clown Guidance" /> -->
-                     <div class="sea">
-                        <div class="circle-wrapper">
-                           <div class="bubble"></div>
-                           <div class="submarine-wrapper">
-                              <div class="submarine-body">
-                                 <div class="window"></div>
-                                 <div class="engine"></div>
-                                 <!-- <div class="light"></div> -->
-                              </div>
-                              <div class="helix"></div>
-                              <div class="hat">
-                                 <div class="leds-wrapper">
-                                    <div class="periscope"></div>
-                                    <div class="leds"></div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                     <img src="{{ asset('/assets/404/clown.png') }}" alt="Clown Guidance" />
                   </center>
                   <br />
                   <h2 class="mb-2 text-[50px] font-bold leading-none text-black sm:text-[80px] md:text-[100px]">

@@ -53,12 +53,21 @@
             <div class="flex justify-end mt-4">
                 <p class="text-right">Total harga = Rp. {{ number_format($totalharga) }}</p>
             </div>
+            @if($totalharga == 0)
+            <form action="{{ route('CartAction', ['userID' => auth()->user()->userID, 'totalHarga' => $totalharga]) }}" method="POST" class="flex justify-end mt-4">
+                @csrf <!-- CSRF protection -->
+                <input type="hidden" name="userID" value="{{ auth()->user()->userID }}">
+                <input type="hidden" name="totalharga" value="{{ $totalharga }}">
+                <button type="submit" class="btn bg-blue-500 text-white px-4 py-2 rounded" disabled>Bayar</button>
+            </form>
+            @else
             <form action="{{ route('CartAction', ['userID' => auth()->user()->userID, 'totalHarga' => $totalharga]) }}" method="POST" class="flex justify-end mt-4">
                 @csrf <!-- CSRF protection -->
                 <input type="hidden" name="userID" value="{{ auth()->user()->userID }}">
                 <input type="hidden" name="totalharga" value="{{ $totalharga }}">
                 <button type="submit" class="btn bg-blue-500 text-white px-4 py-2 rounded">Bayar</button>
             </form>
+            @endif
         </div>
     </div>
     @include('footer')

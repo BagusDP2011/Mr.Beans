@@ -22,8 +22,8 @@ class UserController extends Controller
         }else{
             return view('login');
         }
-        // return view('login');
     }
+
     public function actionlogout()
     {
         Auth::logout();
@@ -77,17 +77,19 @@ class UserController extends Controller
         try {
             if (Auth::attempt($data)) {
                 session()->flash('message', 'Login Berhasil!');
-                return redirect('/');
+                if(Auth::user()->role == 'Admin') {
+                    return redirect('/admin/dashboard');
+                } else {
+                    return redirect('/');
+                }
             } else {
                 throw new \Exception('Username atau Password Salah');
             }
         } catch (\Exception $e) {
             session()->flash('error', $e->getMessage());
             return redirect('login');
-        }
-        
     }
-
+}
     public function actionregister(Request $request)
     {
         try {

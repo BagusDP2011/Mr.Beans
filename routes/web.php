@@ -34,6 +34,7 @@ Route::get('/reseller', [HomeController::class, 'reseller'])->name('reseller');
 //Transactions Routes
 Route::get('/cart', [TransactionController::class, 'cart'])->name('cart');
 Route::post('/cart/action/{userID}/{totalHarga}', [TransactionController::class, 'CartAction'])->name('CartAction');
+Route::get('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
 Route::post('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
 // Route::post('/konfirmasi', [TransactionController::class, 'konfirmasi'])->name('konfirmasi');
 Route::get('/payment/success', [TransactionController::class, 'paymentSuccess'])->name('PaymentSuccess');
@@ -55,11 +56,20 @@ Route::get('actionlogout', [UserController::class, 'actionlogout'])->name('actio
 
 //Admin Routes
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'allProducts'])->name('AdminProducts');
+    Route::get('/dashboard', [AdminController::class, 'adminDashboard'])->name('AdminDashboard');
+    Route::prefix('products')->group(function () {
+        Route::get('/', [AdminController::class, 'allProducts'])->name('AdminProducts');
+        Route::post('/', [AdminController::class, 'tambahProduct'])->name('AdminTambahProduct');
+        Route::get('/{produkID}/edit', [AdminController::class, 'edit'])->name('admin.buku.edit');
+        Route::put('/{produkID}', [AdminController::class, 'updateProduk'])->name('AdminUpdateProduct');
+        Route::delete('/{produkID}', [AdminController::class, 'deleteProduk'])->name('AdminDeleteProduct');
+    });
+    Route::get('/penjualan', [AdminController::class, 'allPenjualan'])->name('AdminPenjualan');
+    Route::get('/resi', [AdminController::class, 'allResi'])->name('AdminResi');
     Route::get('/users', [AdminController::class, 'index'])->name('AdminUser');
     Route::get('/usersprofile', function () {
-         $name = "Admin"; // Dummy data
-         $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
+        $name = "Admin"; // Dummy data
+        $menus = ['Dashboard', 'Produk', 'Penjualan', 'Resi', 'Users']; // Contoh data menu
         return view('AdminDashboardHeader', compact('name', 'menus'));
     });
     Route::get('/product', function () {
