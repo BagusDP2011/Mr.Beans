@@ -8,13 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/css/TailwindStyles.css') }}">
     <script>
-        function redirect() {
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(function() {
-                    window.location.href = "{{ route('home') }}";
-                }, 5000);
-            });
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                window.location.href = "{{ route('home') }}";
+            }, 5000);
+        });
     </script>
 </head>
 

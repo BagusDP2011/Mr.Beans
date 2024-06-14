@@ -38,13 +38,18 @@
                         <td class="py-4 px-6">{{ $transactionHistory->user->fullName ?? 'N/A' }}</td>
                         <td class="py-4 px-6">{{ $transactionHistory->user->noHp ?? 'N/A' }}</td>
                         <td class="py-4 px-6">{{ $transactionHistory->user->alamat ?? 'N/A' }}</td>
-                        <td class="py-4 px-6">{{ $transactionHistory->totalHarga }}</td>
-                        <td class="py-4 px-6">{{ $transactionHistory->status }}</td>
+                        <td class="py-4 px-6">{{ 'Rp. ' . number_format($transactionHistory->totalHarga) }}</td>
+                        @if ($transactionHistory->status == 'Success')
+                        <td class="py-4 px-6 text-green-500 font-bold">{{ $transactionHistory->status }}</td>
+                        @else
+                        <td class="py-4 px-6 text-red-500 font-bold">{{ $transactionHistory->status }}</td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             <!-- <div class="fixed bottom-10 right-10"> -->
+            {{ $TH->links() }}
         </div>
     </body>
 </div>

@@ -166,16 +166,12 @@ class TransactionController extends Controller
                         $cartItem->delete();
                     }
                 }
-                alert('Testing sampe sini');
-                session()->flash('message', 'Transaksi berhasil, silahkan cek email dan tunggu barang sampai. Terima kasih!');
-                return redirect()->route('PaymentSuccess');
+                return view('PaymentSuccess')->with('message', 'Transaksi berhasil, silahkan cek email dan tunggu barang sampai. Terima kasih!');
             } else {
-                session()->flash('message', 'Transaksi berhasil, silahkan cek email dan tunggu barang sampai. Terima kasih!');
-                return redirect()->route('PaymentSuccess');
+                return view('PaymentSuccess')->with('message', 'Transaksi berhasil, silahkan cek email dan tunggu barang sampai. Terima kasih!');
             }
         } catch (\Exception $e) {
-            session()->flash('error', 'Error updating transaction status: ' . $e->getMessage());
-            return view('PaymentError');
+            return view('PaymentError')->with('error', 'Error updating transaction status: ' . $e->getMessage());
         }
     }
 

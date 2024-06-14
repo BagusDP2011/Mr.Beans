@@ -16,30 +16,27 @@ class AdminController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
 
         return view('AdminUser', compact('users'));
     }
 
     function allProducts()
     {
-        $products = Product::all();
+        $products = Product::paginate(10);
         return view('AdminProduct', ['produk' => $products]);
     }
 
     function allPenjualan()
     {
-        // Fetch transaction histories with their related user models
-        $transactionHistories = TransactionHistory::with('user')->get();
-
-        // Fetch related products for each transaction history
-        $transactionHistories->each(function ($transactionHistory) {
+        $transactionHistories = TransactionHistory::with('user')->paginate(10);
+        foreach ($transactionHistories as $transactionHistory) {
             if (is_array($transactionHistory->produkID) && !empty($transactionHistory->produkID)) {
                 $transactionHistory->products = Product::whereIn('produkID', $transactionHistory->produkID)->get();
             } else {
                 $transactionHistory->products = collect(); // Empty collection if no products found
             }
-        });
+        }
 
         return view('AdminPenjualan', ['TH' => $transactionHistories]);
     }

@@ -31,6 +31,7 @@
             </table>
         </div>
     </body>
+{{ $users->links() }}
 </div>
 <div class="items-end self-end mr-10 mb-5">
     <form action="{{ route('cetak.user') }}" method="GET">
@@ -40,4 +41,6 @@
         </button>
     </form>
 </div>
+
+
 @include('AdminDashboardFooter')

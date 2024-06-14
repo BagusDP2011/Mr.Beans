@@ -44,7 +44,11 @@
                         <td>{{ $transactionHistory->user->noHp ?? 'N/A' }}</td>
                         <td>{{ $transactionHistory->user->alamat ?? 'N/A' }}</td>
                         <td>{{ $transactionHistory->totalHarga }}</td>
-                        <td>{{ $transactionHistory->status }}</td>
+                        @if ($transactionHistory->status == 'Success')
+                        <td class="py-4 px-6 text-green-500 font-bold" style="color: green;">{{ $transactionHistory->status }}</td>
+                        @else
+                        <td class="py-4 px-6 text-red-500 font-bold" style="color: red;">{{ $transactionHistory->status }}</td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

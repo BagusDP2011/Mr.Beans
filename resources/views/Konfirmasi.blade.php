@@ -43,7 +43,7 @@
 
             <p class="mt-3 pt-3 w-full" style="border-top: 2px solid black;">JUMLAH YANG HARUS DI BAYAR</p>
             @if (isset($totalHarga) && $totalHarga !== null)
-            <p class="text-blue-600 text-3xl py-2 font-bold">Total Harga : Rp. {{ number_format($totalHargaBayar) }}</p>
+            <p class="text-blue-600 text-3xl py-2 font-bold">Total Harga : Rp. {{ number_format($totalHarga) }}</p>
             <h6>Harap transfer sesuai jumlah pembayaran dengan sesuai.</h6>
             <h6>Jika jumlah pembayaran tidak sesuai, proses verifikasi pembayaran anda akan terhambat.</h6>
             @else
@@ -73,7 +73,7 @@
             @else
             <data id="divkosong"></data>
             @endif
-            <button type="submit" onclick="window.location.href=`{{ route('products') }}`" class="bg-blue-500 hover:bg-blue-700 text-white font-bold pb-2 px-4 my-4 rounded mt-8">Batalkan dan Kembali ke Halaman Produk</button>
+            <button type="submit" onclick="window.location.href=`{{ route('products') }}`" class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 px-4 my-4 rounded mt-8">Batalkan dan Kembali ke Halaman Produk</button>
         </div>
     </div>
     @include('footer')
