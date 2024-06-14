@@ -50,8 +50,8 @@ $user = Auth::user();
             </button>
             <div class="hidden lg:flex items-center justify-between">
                 Empty
-                    <h4>REAL TIME CLOCK</h4>
-                    <div id="clock"></div>
+                <h4>REAL TIME CLOCK</h4>
+                <div id="clock"></div>
                 <img src="{{ asset('./assets/old/Logo MB Transparent.png') }}" class="rounded-full w-16 h-16" alt="Logo Mr Beans">
             </div>
         </div>
@@ -73,8 +73,9 @@ $user = Auth::user();
         <hr class="my-2">
         <div class="p-4">
             <h5 class="font-semibold">Dashboard Menu</h5>
+            <!-- $menus = ['Dashboard', 'Products', 'Penjualan', 'Resi', 'User']; -->
             @php
-            $menus = ['Dashboard', 'Products', 'Penjualan', 'Resi', 'User'];
+            $menus = ['Dashboard', 'Products', 'Penjualan', 'User'];
             @endphp
             @foreach($menus as $menu)
             <a href="{{ route('Admin' . $menu) }}" class="block py-2 px-4 mt-2 bg-gray-200 text-gray-800 rounded-lg text-center hover:bg-gray-300">{{ $menu }}</a>

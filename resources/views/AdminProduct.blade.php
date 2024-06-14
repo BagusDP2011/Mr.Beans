@@ -2,7 +2,7 @@
 <div class="ml-64 p-8">
     <header>
         @include('Session')
-        <h5 class="text-lg font-semibold"><i class="fa fa-dashboard mr-5"></i>List Produk</h5>
+        <h5 class="text-lg font-semibold"><i class="fa fa-shopping-basket mr-5"></i>List Produk</h5>
     </header>
 
     <div class="flex justify-end mb-4">
@@ -15,8 +15,8 @@
     </div>
 
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-2 border-black">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-400 border-2 border-black dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="py-3 px-6">Gambar</th>
                     <th scope="col" class="py-3 px-6">Nama Produk</th>
@@ -26,9 +26,8 @@
                     <th scope="col" class="py-3 px-6">Aksi</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($produk as $index => $data)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tbody class="bg-gray-200 dark:bg-gray-800 dark:border-gray-700"> @foreach ($produk as $index => $data)
+                <tr class="border border-black">
                     <td class="py-4 px-6">
                         <img src='{{ $data["gambar"] }}' alt="{{ $data['namaProduk'] }}" class="w-24 h-24 object-cover">
                     </td>
@@ -44,7 +43,7 @@
                     <td class="py-4 px-6">
                         {{ $data['deskripsi'] }}
                     </td>
-                    <td class="px-6 py-4 border border-grey-500">
+                    <td class="px-6 py-4">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center" data-modal-target="editModal-{{ $index }}" data-modal-toggle="editModal-{{ $index }}">
                             Edit
                         </button>
@@ -167,36 +166,12 @@
         </div>
     </div>
 </div>
-<div class="items-end self-end m-5 mr-10">
-    <button id="btnCetakResi" class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
-        Cetak Resi
-    </button>
+<div class="items-end self-end mr-10 mb-5">
+    <form action="{{ route('cetak.product') }}" method="GET">
+        @csrf
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-600">
+            Cetak Resi
+        </button>
+    </form>
 </div>
-<div id="divKosong" class="" height='200px'></div>
 @include('AdminDashboardFooter')
-
-
-<script>
-    const btnCetakResi = document.getElementById('btnCetakResi');
-    btnCetakResi.addEventListener('click', async () => {
-        try {
-            const response = await fetch('/cetak/resi-product', {
-                method: 'GET',
-            });
-
-            if (!response.ok) {
-                throw new Error('Gagal menghasilkan resi PDF');
-            }
-
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.target = '_blank';
-            link.click();
-        } catch (error) {
-            console.error(error);
-            alert('Terjadi kesalahan saat mencetak resi');
-        }
-    });
-</script>

@@ -1,59 +1,74 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Models\TransactionHistory;
 use App\Models\Product;
-
-
+use Illuminate\Support\Facades\Log;
 
 class PdfController extends Controller
 {
     public function cetakResi()
     {
-        // Ambil data transaksi dari database
-        $TH = TransactionHistory::all();
+        try {
+            $TH = TransactionHistory::all();
+            $html = view('TABEL CETAK RESI.list_penjualan_tabel', compact('TH'))->render();
+            $pdf = PDF::loadHTML($html);
+            $pdf->setPaper('a4', 'portrait');
 
-        // Buat HTML untuk tabel transaksi menggunakan partial Blade
-        $html = View::make('TABEL CETAK RESI.list_penjualan_tabel', compact('TH'))->render();
+            if (!$pdf) {
+                Log::info('generate pdf error');
+                throw new \Exception('Failed to load HTML into PDF');
+            }
 
-        // Generate PDF
-        $pdf = PDF::loadHTML($html);
-
-        // Download PDF
-        return $pdf->download('resi_penjualan.pdf');
+            return $pdf->download('resi_penjualan.pdf');
+        } catch (\Exception $e) {
+            Log::error('Error generating PDF:', ['exception' => $e->getMessage()]);
+            return response()->json(['error' => 'Failed to generate PDF'], 500);
+        }
     }
 
-    public function generatePdf()
+    public function cetakUser()
     {
-        // Ambil data pengguna dari database
-        $users = User::all();
+        try {
+            $users = User::all();
+            $html = View::make('TABEL CETAK RESI.user_table_pdf', compact('users'))->render();
+            $pdf = PDF::loadHTML($html);
+            $pdf->setPaper('a4', 'portrait');
 
-        // Buat HTML untuk tabel pengguna menggunakan partial Blade
-        $html = View::make('TABEL CETAK RESI.user_table_pdf', compact('users'))->render();
+            if (!$pdf) {
+                Log::info('generate pdf error');
+                throw new \Exception('Failed to load HTML into PDF');
+            }
 
-
-        // Generate PDF
-        $pdf = PDF::loadHTML($html);
-
-        // Download PDF
-        return $pdf->download('daftar_pengguna.pdf');
+            return $pdf->download('daftar_pengguna.pdf');
+        } catch (\Exception $e) {
+            Log::error('Error generating PDF:', ['exception' => $e->getMessage()]);
+            return response()->json(['error' => 'Failed to generate PDF'], 500);
+        }
     }
-    public function productPDF()
+
+    public function cetakProduct()
     {
-        // Ambil data produk dari database
-        $produk = Product::all();
+        try {
+            $produk = Product::all();
+            $html = view('TABEL CETAK RESI.product_table_pdf', compact('produk'))->render();
+            $pdf = PDF::loadHTML($html);
+            $pdf->setPaper('a4', 'portrait');
 
-        // Buat HTML untuk tabel produk menggunakan partial Blade
-        $html = view('TABEL CETAK RESI.product_table_pdf', compact('produk'))->render();
+            if (!$pdf) {
+                Log::info('generate pdf error');
+                throw new \Exception('Failed to load HTML into PDF');
+            }
 
-        // Generate PDF
-        $pdf = PDF::loadHTML($html);
-
-        // Download PDF
-        return $pdf->download('daftar_produk.pdf');
+            return $pdf->download('daftar_produk.pdf');
+        } catch (\Exception $e) {
+            Log::error('Error generating PDF:', ['exception' => $e->getMessage()]);
+            return response()->json(['error' => 'Failed to generate PDF'], 500);
+        }
     }
 }

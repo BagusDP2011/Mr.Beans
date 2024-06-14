@@ -1,10 +1,20 @@
-<div class="ml-64 p-8">
-    <header>
-        <h5 class="text-lg font-semibold"><i class="fa fa-users mr-5"></i>List Pengguna</h5>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body>
+<header>
+    <meta charset="UTF-8">
+    <title>List User Terdaftar</title>
+</header>
+
+<body>
+    <div class="ml-64 p-8">
+        <center>
+            <img src="./assets/pdf/header.png" alt="Header PDF" width="720px">
+        </center>
         <div class="overflow-x-auto relative shadow-md sm:rounded-lg mb-6">
+            <center>
+                <h1 class="text-center font-bold">List User Terdaftar</h1>
+            </center>
             <table style="width: 100%; border-collapse: collapse;">
                 <thead style="background-color: #f3f4f6;">
                     <tr>
@@ -30,5 +40,7 @@
                 </tbody>
             </table>
         </div>
-    </body>
-</div>
+    </div>
+</body>
+
+</html>

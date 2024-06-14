@@ -1,10 +1,20 @@
-<div class="ml-64 p-8">
-    <header>
-        <h5 class="text-lg font-semibold"><i class="fa fa-dashboard mr-5"></i>List Penjualan</h5>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body>
-        <div class="overflow-x-auto relative shadow-md sm:rounded-lg mb-6 mt-2">
+<header>
+    <meta charset="UTF-8">
+    <title>History Penjualan</title>
+</header>
+
+<body>
+    <div class="ml-64 p-8">
+        <center>
+            <img src="./assets/pdf/header.png" alt="Header PDF" width="720px">
+        </center>
+        <div class="overflow-x-auto relative shadow-md sm:rounded-lg mb-6 mt-4">
+            <center>
+                <h1 class="text-center font-bold">List History dan Status Penjualan</h1>
+            </center>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" border="1">
                 <thead>
                     <tr>
@@ -39,4 +49,9 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="fixed bottom-10 right-10">
+            <!-- <div class="fixed bottom-10 right-10"> -->
+        </div>
+    </div>
+</body>
+
+</html>
