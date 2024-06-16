@@ -6,7 +6,7 @@
     </header>
 
     <div class="flex justify-end mb-4">
-        <button class="bg-blue-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded flex items-center" data-modal-target="tambahProdukModal" data-modal-toggle="tambahProdukModal">
+        <button class="bg-blue-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded flex items-center" data-modal-target="#tambahProdukModal" data-modal-toggle="tambahProdukModal">
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
             </svg>
@@ -26,7 +26,8 @@
                     <th scope="col" class="py-3 px-6">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="bg-gray-200 dark:bg-gray-800 dark:border-gray-700"> @foreach ($produk as $index => $data)
+            <tbody class="bg-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                @foreach ($produk as $index => $data)
                 <tr class="border border-black">
                     <td class="py-4 px-6">
                         <img src='{{ $data["gambar"] }}' alt="{{ $data['namaProduk'] }}" class="w-24 h-24 object-cover">
@@ -44,7 +45,7 @@
                         {{ $data['deskripsi'] }}
                     </td>
                     <td class="px-6 py-4">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center" data-modal-target="editModal-{{ $index }}" data-modal-toggle="editModal-{{ $index }}">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center" data-modal-target="#editModal-{{ $index }}" data-modal-toggle="editModal-{{ $index }}">
                             Edit
                         </button>
                         <form action="{{ route('AdminDeleteProduct', $data->produkID) }}" method="POST" class="inline">
@@ -61,9 +62,9 @@
                 <div id="editModal-{{ $index }}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                     <div class="relative w-full max-w-2xl max-h-full">
                         <!-- Modal content -->
-                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div class="relative bg-blue-300 rounded-lg shadow dark:bg-gray-700">
                             <!-- Modal header -->
-                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600 bg-blue-400">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                                     Edit Produk
                                 </h3>
@@ -80,29 +81,29 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-4">
-                                        <label for="namaProduk" class="block text-gray-700 text-sm font-bold mb-2">Nama Produk:</label>
-                                        <input type="text" name="namaProduk" id="namaProduk" value="{{ $data['namaProduk'] }}" placeholder="Nama Produk" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        <label for="namaProduk-{{ $index }}" class="block text-gray-700 text-sm font-bold mb-2">Nama Produk:</label>
+                                        <input type="text" name="namaProduk" id="namaProduk-{{ $index }}" value="{{ $data['namaProduk'] }}" placeholder="Nama Produk" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="harga" class="block text-gray-700 text-sm font-bold mb-2">Harga:</label>
-                                        <input type="text" name="harga" id="harga" value="{{ $data['harga'] }}" placeholder="Harga" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        <label for="harga-{{ $index }}" class="block text-gray-700 text-sm font-bold mb-2">Harga:</label>
+                                        <input type="text" name="harga" id="harga-{{ $index }}" value="{{ $data['harga'] }}" placeholder="Harga" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="stock" class="block text-gray-700 text-sm font-bold mb-2">Stock:</label>
-                                        <input type="text" name="stock" id="stock" placeholder="Stock" value="{{ $data['stock'] }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        <label for="stock-{{ $index }}" class="block text-gray-700 text-sm font-bold mb-2">Stock:</label>
+                                        <input type="text" name="stock" id="stock-{{ $index }}" placeholder="Stock" value="{{ $data['stock'] }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="deskripsi" class="block text-gray-700 text-sm font-bold mb-2">Deskripsi:</label>
-                                        <input type="textarea" name="deskripsi" id="deskripsi" placeholder="Deskripsi" value="{{ $data['deskripsi'] }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        <label for="deskripsi-{{ $index }}" class="block text-gray-700 text-sm font-bold mb-2">Deskripsi:</label>
+                                        <input type="textarea" name="deskripsi" id="deskripsi-{{ $index }}" placeholder="Deskripsi" value="{{ $data['deskripsi'] }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="gambar" class="block text-gray-700 text-sm font-bold mb-2">Gambar:</label>
-                                        <input type="text" name="gambar" id="gambar" placeholder="Link URL Gambar" value="{{ $data['gambar'] }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        <label for="gambar-{{ $index }}" class="block text-gray-700 text-sm font-bold mb-2">Gambar:</label>
+                                        <input type="text" name="gambar" id="gambar-{{ $index }}" placeholder="Link URL Gambar" value="{{ $data['gambar'] }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     </div>
                                 </form>
                             </div>
                             <!-- Modal footer -->
-                            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 bg-blue-400">
                                 <button type="submit" form="editForm-{{ $index }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Produk</button>
                                 <button data-modal-hide="editModal-{{ $index }}" type="button" class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Batalkan</button>
                             </div>
@@ -116,14 +117,13 @@
     {{ $produk->links() }}
 
 
-
     <!-- Tambah Produk Modal -->
     <div id="tambahProdukModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="relative bg-blue-300 rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
-                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600 bg-blue-400">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                         Tambah Produk Baru
                     </h3>
@@ -161,7 +161,7 @@
                     </form>
                 </div>
                 <!-- Modal footer -->
-                <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 bg-blue-400">
                     <button type="submit" form="tambahProdukForm" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah Produk</button>
                     <button data-modal-hide="tambahProdukModal" type="button" class="text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Batalkan</button>
                 </div>
@@ -178,3 +178,21 @@
     </form>
 </div>
 @include('AdminDashboardFooter')
+
+<!-- Include the Flowbite JS file -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the 'Tambah Produk' modal
+        var tambahProdukModalElement = document.getElementById('tambahProdukModal');
+        if (tambahProdukModalElement) {
+            new Modal(tambahProdukModalElement);
+        }
+
+        // Initialize each 'Edit' modal dynamically
+        var editModals = document.querySelectorAll('[id^=editModal-]');
+        editModals.forEach(function(modalElement) {
+            new Modal(modalElement);
+        });
+    });
+</script>

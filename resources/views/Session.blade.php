@@ -1,6 +1,6 @@
 <div class="my-3">
     @if (session()->has('message'))
-    <div class="alert alert-success alert-dismissible fade show rounded-xl p-3 m-2" role="alert">
+    <div class="alert alert-success alert-dismissible fade show rounded-xl p-3 m-2 bg-green-500 pl-3 pb-3" role="alert">
         <div class=" flex items-center justify-between font-bold text-xl">
             <h2 class="alert-heading">Success!</h2>
             <button type="button" class="flex px-4 py-3" data-dismiss="alert" aria-label="Close">
@@ -12,7 +12,7 @@
     @endif
 
     @if (session()->has('error'))
-    <div class="alert alert-danger alert-dismissible fade show rounded-xl p-3 m-2" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show rounded-xl p-3 m-2 bg-red-500 pl-3 pb-3" role="alert">
         <div class=" flex items-center justify-between font-bold text-xl">
             <h2 class="alert-heading">Error!</h2>
             <button type="button" class="flex px-4 py-3" data-dismiss="alert" aria-label="Close">
@@ -24,7 +24,7 @@
     @endif
 
     @if ($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show rounded-xl p-3 m-2" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show rounded-xl p-3 m-2 bg-red-500 pl-3 pb-3" role="alert">
         <div class=" flex items-center justify-between font-bold text-xl">
             <h2 class="alert-heading">Errors!</h2>
             <button type="button" class="flex px-4 py-3" data-dismiss="alert" aria-label="Close">
