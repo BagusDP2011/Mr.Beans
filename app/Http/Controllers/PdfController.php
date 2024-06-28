@@ -14,6 +14,7 @@ class PdfController extends Controller
 {
     public function cetakResi()
     {
+        set_time_limit(150);
         try {
             $TH = TransactionHistory::all();
             $html = view('TABEL CETAK RESI.list_penjualan_tabel', compact('TH'))->render();
@@ -34,6 +35,7 @@ class PdfController extends Controller
 
     public function cetakUser()
     {
+        set_time_limit(150);
         try {
             $users = User::all();
             $html = View::make('TABEL CETAK RESI.user_table_pdf', compact('users'))->render();
@@ -54,6 +56,7 @@ class PdfController extends Controller
 
     public function cetakProduct()
     {
+        set_time_limit(150);
         try {
             $produk = Product::all();
             $html = view('TABEL CETAK RESI.product_table_pdf', compact('produk'))->render();
